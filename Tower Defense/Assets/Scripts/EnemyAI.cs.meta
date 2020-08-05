@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f8dae5932eac1c94b8f5d0f4eab75f4d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemy: {instanceID: 0}
+  - projectile: {instanceID: 0}
+  - pathfinding: {instanceID: 0}
+  - target: {instanceID: 0}
+  - hurtParticles: {fileID: 9004610638690518784, guid: aa0e5765c5d9f834f9aca79cdd7fdefe,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
