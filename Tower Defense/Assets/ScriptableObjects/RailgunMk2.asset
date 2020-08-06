@@ -19,7 +19,7 @@ MonoBehaviour:
   price: 1150
   level: 1
   maxHp: 100
-  attackDmg: 20
+  attackDmg: 24
   attackRate: 3
   range: 16
   upgrade: []

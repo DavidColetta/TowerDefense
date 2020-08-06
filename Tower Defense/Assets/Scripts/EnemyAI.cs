@@ -11,7 +11,6 @@ public class EnemyAI : MonoBehaviour
     public EnemyPathfinding pathfinding;
     public GameObject target;
     private Rigidbody2D rb;
-    private float difficulty;
     public GameObject hurtParticles;
 
 
@@ -20,9 +19,8 @@ public class EnemyAI : MonoBehaviour
         pathfinding = GetComponent<EnemyPathfinding>();
         pathfinding.enemy = enemy;
         rb = GetComponent<Rigidbody2D>();
-        difficulty = transform.root.GetComponent<DifficultyManager>().difficulty;
 
-        hp = Mathf.RoundToInt(enemy.maxHp * difficulty);
+        hp = Mathf.RoundToInt(enemy.maxHp * DifficultyManager.difficulty);
         rb.mass = enemy.maxHp/10;
     }
     void FixedUpdate()

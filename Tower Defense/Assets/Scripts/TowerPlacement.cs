@@ -37,8 +37,7 @@ public class TowerPlacement : MonoBehaviour
 
         transform.Find("Range").localScale = Vector2.one*tower.range*2;
     }
-    void Update()
-    {
+    private void FixedUpdate() {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector2(Mathf.Round(mouseWorldPosition.x), Mathf.Round(mouseWorldPosition.y)) + Offset;
 
@@ -47,30 +46,34 @@ public class TowerPlacement : MonoBehaviour
         } else {
             CanPlace = true;
         }
-
-        if (Input.GetMouseButtonDown(0)){
-            if (!EventSystem.current.IsPointerOverGameObject()){
-                if (CanPlace && MoneyManager.money >= tower.price){
-                    GameObject _placedTower = Instantiate(tower.towerObj, transform.position, transform.rotation, parent.transform);
-                    MoneyManager.GainMoney(tower.price * -1);
+    }
+    void Update()
+    {
+        if (!PauseManager.paused){
+            if (Input.GetMouseButtonDown(0)){
+                if (!EventSystem.current.IsPointerOverGameObject()){
+                    if (CanPlace && MoneyManager.money >= tower.price){
+                        GameObject _placedTower = Instantiate(tower.towerObj, transform.position, transform.rotation, parent.transform);
+                        MoneyManager.GainMoney(tower.price * -1);
+                    }
+                } else {
+                    Destroy(gameObject);
                 }
-            } else {
+            }
+
+            if (Input.GetKeyDown(KeyCode.R)){
+                transform.Rotate(0f, 0f, 90f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetMouseButtonDown(1)){
                 Destroy(gameObject);
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.R)){
-            transform.Rotate(0f, 0f, 90f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetMouseButtonDown(1)){
-            Destroy(gameObject);
-        }
-
-        if (CanPlace){
-            SpriteR.color = new Color(1f, 1f, 1f, CollisionColor.a);
-        } else {
-            SpriteR.color = CollisionColor;
+            if (CanPlace){
+                SpriteR.color = new Color(1f, 1f, 1f, CollisionColor.a);
+            } else {
+                SpriteR.color = CollisionColor;
+            }
         }
     }
 }

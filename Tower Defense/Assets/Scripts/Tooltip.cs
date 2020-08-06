@@ -28,6 +28,11 @@ public class Tooltip : MonoBehaviour
             anchoredPosition.y = canvasRectTransform.rect.height - backgroundRectTransform.rect.height;
         }
         transform.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace)){
+            HideTooltip();
+        }
     }
     public void ShowTooltip(string tooltipString){
         gameObject.SetActive(true);
@@ -48,5 +53,14 @@ public class Tooltip : MonoBehaviour
     }
     public static void HideTooltip_Static(){
         instance.HideTooltip();
+    }
+    public void CreateTowerTooltip(Tower tower){
+        if (tower != null){
+            string tooltipString = tower.name+"\nDamage: "+tower.attackDmg.ToString()+"\nAttack Rate: "+tower.attackRate.ToString()+"\nHp: "+tower.maxHp.ToString();
+            ShowTooltip(tooltipString);
+        }
+    }
+    public static void CreateTowerTooltip_Static(Tower tower){
+        instance.CreateTowerTooltip(tower);
     }
 }

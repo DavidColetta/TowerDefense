@@ -4,25 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NextWaveButton : MonoBehaviour
+public class RestartWaveButton : MonoBehaviour
 {
     private Button button;
     private TextMeshProUGUI nextWaveTextTMP;
+    public static bool CanRestart = false;
     void Start()
     {
         button = GetComponent<Button>();
-        nextWaveTextTMP = transform.Find("NextWaveText").gameObject.GetComponent<TextMeshProUGUI>();
+        nextWaveTextTMP = transform.Find("RestartWaveText").gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (EnemySpawner.waveInProgress){
+        if (EnemySpawner.waveInProgress || !CanRestart){
             button.interactable = false;
         }
-        if (!EnemySpawner.waveInProgress && !button.interactable){
+        if (!EnemySpawner.waveInProgress && !button.interactable && CanRestart){
             button.interactable = true;
-            nextWaveTextTMP.SetText("Wave " + (EnemySpawner.wave + 1));
+            nextWaveTextTMP.SetText("Restart Wave " + (EnemySpawner.wave));
         }
     }   
 }

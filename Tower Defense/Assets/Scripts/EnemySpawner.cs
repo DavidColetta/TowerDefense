@@ -13,12 +13,16 @@ public class EnemySpawner : MonoBehaviour
     public float[] spawnChances;
     [HideInInspector]
     public Vector2 spawnPos;
-    public int wave = 0;
+    public static int wave = 0;
     [HideInInspector]
     public int spawnCurrency;
     [HideInInspector]
-    public bool waveInProgress = false;
+    public static bool waveInProgress = false;
     private List<int> cannotSpawn = new List<int>();
+    private void Awake() {
+        wave = 0;
+        waveInProgress = false;
+    }
     public void StartNextWave() {
         if (!waveInProgress){
             wave ++;
@@ -26,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
             spawnCurrency = wave * waveMultiplier;
             spawnSpeed ++;
             cannotSpawn.Clear();
+            RestartWaveButton.CanRestart = true;
             
             spawnPos = new Vector2(Random.Range(-spawnBox.x, spawnBox.x), Random.Range(-spawnBox.y, spawnBox.y));
             if (Random.value > 0.5f){
@@ -34,6 +39,16 @@ public class EnemySpawner : MonoBehaviour
                 spawnPos = new Vector2(spawnPos.x, spawnBox.y*(spawnPos.y / Mathf.Abs(spawnPos.y)));
             }
             spawnChanceScript.UpdateSpawnChances(wave);
+            StartCoroutine("SpawnWave");
+        }
+    }
+    public void RestartWave(){
+        if (!waveInProgress){
+            waveInProgress = true;
+            spawnCurrency = wave * waveMultiplier;
+            cannotSpawn.Clear();
+            RestartWaveButton.CanRestart = false;
+
             StartCoroutine("SpawnWave");
         }
     }
@@ -49,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
         }
         waveInProgress = false;
 
-        MoneyManager.GainMoney((int)(waveMultiplier*(0.5f + wave*0.1f)));
+        MoneyManager.GainMoney(Mathf.RoundToInt(waveMultiplier*(0.5f + wave*0.1f)));
     }
 
     Enemy ChooseEnemy(){

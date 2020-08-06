@@ -39,18 +39,18 @@ public class UpgradeButton : MonoBehaviour
             Transform selectedTower = Selector.selectedObject.transform;
             GameObject _createdTower = Instantiate(upgradedTower.towerObj, selectedTower.position, selectedTower.rotation, selectedTower.parent);
             _createdTower.GetComponent<TowerAI>().hp = selectedTower.gameObject.GetComponent<TowerAI>().hp + (upgradedTower.maxHp-tower.maxHp);
-            Debug.Log(selectedTower.gameObject.GetComponent<TowerAI>().hp + (upgradedTower.maxHp-tower.maxHp));
             Destroy(selectedTower.gameObject);
             MoneyManager.GainMoney(-upgradeCost);
         }
     }
 
     public void CreateTooltip(){
-        string tooltipString = upgradedTower.name+"\nDamage: "+upgradedTower.attackDmg.ToString()+"\nAttack Rate: "+upgradedTower.attackRate.ToString()+"\nHp: "+upgradedTower.maxHp.ToString();
-        Tooltip.ShowTooltip_Static(tooltipString);
+        Tooltip.CreateTowerTooltip_Static(upgradedTower);
+        Transform _range = Selector.selectedObject.transform.Find("Range");
+        _range.localScale = Vector2.one*upgradedTower.range*2;
     }
-
-    private void OnDisable() {
-        Tooltip.HideTooltip_Static();
+    public void ResetRange(){
+        Transform _range = Selector.selectedObject.transform.Find("Range");
+        _range.localScale = Vector2.one*tower.range*2;
     }
 }

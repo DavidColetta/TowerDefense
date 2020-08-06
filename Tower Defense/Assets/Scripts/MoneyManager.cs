@@ -17,6 +17,7 @@ public class MoneyManager : MonoBehaviour
     {
         moneyDisplayTMP.SetText("$" + money.ToString());
         instance = this;
+        money = 0;
         GainMoney(startingMoney);
     }
     void Update()

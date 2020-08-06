@@ -49,7 +49,7 @@ public class Selector : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Backspace)){
             selectedObject = null;
         }
         if (selectedObject){
@@ -58,6 +58,11 @@ public class Selector : MonoBehaviour
             selectedDisplayPanel.SetActive(false);
             if (rangeDisplay)
                 rangeDisplay.SetActive(false);
+        }
+    }
+    public void ToolipSelectedTower(){
+        if (towerAI != null){
+            Tooltip.CreateTowerTooltip_Static(towerAI.tower);
         }
     }
 }
