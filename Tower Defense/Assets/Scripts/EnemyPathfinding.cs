@@ -11,7 +11,7 @@ public class EnemyPathfinding : MonoBehaviour
     public GameObject target;
     public float nextWaypointDistance = 1f;
     public float pathUpdateRate = 1f;
-    Path path = null;
+    public Path path = null;
     int currentWaypoint = 0;
     public bool reachedEndOfPath = false;
     public bool reachedTower = false;
