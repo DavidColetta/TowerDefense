@@ -19,14 +19,16 @@ public class RepairButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        towerAI = Selector.selectedObject.GetComponent<TowerAI>();
-        repairCost = Mathf.CeilToInt(towerAI.tower.price * (towerAI.tower.maxHp-towerAI.hp) / towerAI.tower.maxHp);
-        if (0 < repairCost && repairCost <= MoneyManager.money){
-            button.interactable = true;
-        } else {
-            button.interactable = false;
+        if (Selector.selectedObject){
+            towerAI = Selector.selectedObject.GetComponent<TowerAI>();
+            repairCost = Mathf.CeilToInt(towerAI.tower.price * (towerAI.tower.maxHp-towerAI.hp) / towerAI.tower.maxHp);
+            if (0 < repairCost && repairCost <= MoneyManager.money){
+                button.interactable = true;
+            } else {
+                button.interactable = false;
+            }
+            repairCostDisplay.SetText(repairCost.ToString());
         }
-        repairCostDisplay.SetText(repairCost.ToString());
     }
 
     public void RepairTower(){

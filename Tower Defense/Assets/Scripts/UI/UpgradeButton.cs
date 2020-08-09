@@ -19,19 +19,21 @@ public class UpgradeButton : MonoBehaviour
     }
 
     void Update() {
-        tower = Selector.selectedObject.GetComponent<TowerAI>().tower;
-        if (tower.upgrade.Length > upgradeNumb){
-            upgradedTower = tower.upgrade[upgradeNumb];
-            upgradeCost = upgradedTower.price - tower.price;
-            upgradeCostDisplay.SetText(upgradeCost.ToString());
-        } else {
-            gameObject.SetActive(false);
-        }
+        if (Selector.selectedObject){
+            tower = Selector.selectedObject.GetComponent<TowerAI>().tower;
+            if (tower.upgrade.Length > upgradeNumb){
+                upgradedTower = tower.upgrade[upgradeNumb];
+                upgradeCost = upgradedTower.price - tower.price;
+                upgradeCostDisplay.SetText(upgradeCost.ToString());
+            } else {
+                gameObject.SetActive(false);
+            }
 
-        if (upgradeCost <= MoneyManager.money){
-            button.interactable = true;
-        } else {
-            button.interactable = false;
+            if (upgradeCost <= MoneyManager.money){
+                button.interactable = true;
+            } else {
+                button.interactable = false;
+            }
         }
     }
     public void UpgradeTower(){
@@ -50,7 +52,9 @@ public class UpgradeButton : MonoBehaviour
         _range.localScale = Vector2.one*upgradedTower.range*2;
     }
     public void ResetRange(){
-        Transform _range = Selector.selectedObject.transform.Find("Range");
-        _range.localScale = Vector2.one*tower.range*2;
+        if (Selector.selectedObject){
+            Transform _range = Selector.selectedObject.transform.Find("Range");
+            _range.localScale = Vector2.one*tower.range*2;
+        } 
     }
 }

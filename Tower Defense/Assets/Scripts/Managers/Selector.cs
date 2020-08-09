@@ -31,7 +31,7 @@ public class Selector : MonoBehaviour
                 if (hit.collider != null) {
                     selectedObject = hit.collider.gameObject;
                     if (selectedObject.tag == "Tower" || selectedObject.tag == "Wall"){
-                        selectedDisplayPanel.SetActive(true);
+                        selectedDisplayPanel.GetComponent<ScaleTween>().Enable();
                         towerAI = selectedObject.GetComponent<TowerAI>();
                         nameDisplay.SetText(towerAI.tower.name);
                         if (rangeDisplay)
@@ -55,7 +55,7 @@ public class Selector : MonoBehaviour
         if (selectedObject){
             hpDisplay.SetText(towerAI.hp.ToString() + "/" + towerAI.tower.maxHp.ToString());
         } else {
-            selectedDisplayPanel.SetActive(false);
+            selectedDisplayPanel.GetComponent<ScaleTween>().Disable();
             if (rangeDisplay)
                 rangeDisplay.SetActive(false);
         }

@@ -17,9 +17,11 @@ public class DestroyButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        towerAI = Selector.selectedObject.GetComponent<TowerAI>();
-        destroyCost = Mathf.FloorToInt(0.75f * towerAI.tower.price * towerAI.hp / towerAI.tower.maxHp);
-        destroyCostDisplay.SetText(destroyCost.ToString());
+        if (Selector.selectedObject){
+            towerAI = Selector.selectedObject.GetComponent<TowerAI>();
+            destroyCost = Mathf.FloorToInt(0.75f * towerAI.tower.price * towerAI.hp / towerAI.tower.maxHp);
+            destroyCostDisplay.SetText(destroyCost.ToString());
+        }
     }
 
     public void DestroyTower(){
