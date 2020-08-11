@@ -55,6 +55,7 @@ public class TowerPlacement : MonoBehaviour
                     if (CanPlace && MoneyManager.money >= tower.price){
                         GameObject _placedTower = Instantiate(tower.towerObj, transform.position, transform.rotation, parent.transform);
                         MoneyManager.GainMoney(tower.price * -1);
+                        Selector.SelectTower(_placedTower);
                     }
                 } else {
                     Destroy(gameObject);

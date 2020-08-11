@@ -14,10 +14,12 @@ public class Selector : MonoBehaviour
     private TowerAI towerAI;
     private GameObject rangeDisplay;
     public GameObject upgrade1Button;
+    private static Selector instance;
     
     void Awake()
     {
         selectedDisplayPanel.SetActive(false);
+        instance = this;
     }
 
     // Update is called once per frame
@@ -31,18 +33,7 @@ public class Selector : MonoBehaviour
                 if (hit.collider != null) {
                     selectedObject = hit.collider.gameObject;
                     if (selectedObject.tag == "Tower" || selectedObject.tag == "Wall"){
-                        selectedDisplayPanel.GetComponent<ScaleTween>().Enable();
-                        towerAI = selectedObject.GetComponent<TowerAI>();
-                        nameDisplay.SetText(towerAI.tower.name);
-                        if (rangeDisplay)
-                            rangeDisplay.SetActive(false);
-                        rangeDisplay = selectedObject.transform.Find("Range").gameObject;
-                        rangeDisplay.SetActive(true);
-                        if (towerAI.tower.range > 0)
-                            rangeDisplay.transform.localScale = Vector2.one*towerAI.tower.range*2;
-                        if (towerAI.tower.upgrade.Length > 0){
-                            upgrade1Button.SetActive(true);
-                        }
+                        Selector.SelectTower(selectedObject);
                     }
                 } else {
                     selectedObject = null;
@@ -55,9 +46,26 @@ public class Selector : MonoBehaviour
         if (selectedObject){
             hpDisplay.SetText(towerAI.hp.ToString() + "/" + towerAI.tower.maxHp.ToString());
         } else {
-            selectedDisplayPanel.GetComponent<ScaleTween>().Disable();
+            selectedDisplayPanel.GetComponent<SelectedPanelTween>().Disable();
             if (rangeDisplay)
                 rangeDisplay.SetActive(false);
+        }
+    }
+    public static void SelectTower(GameObject _selected){
+        if (selectedObject != _selected){
+            selectedObject = _selected;
+        }
+        instance.selectedDisplayPanel.GetComponent<SelectedPanelTween>().Enable();
+        instance.towerAI = _selected.GetComponent<TowerAI>();
+        instance.nameDisplay.SetText(instance.towerAI.tower.name);
+        if (instance.rangeDisplay)
+            instance.rangeDisplay.SetActive(false);
+        instance.rangeDisplay = _selected.transform.Find("Range").gameObject;
+        instance.rangeDisplay.SetActive(true);
+        if (instance.towerAI.tower.range > 0)
+            instance.rangeDisplay.transform.localScale = Vector2.one*instance.towerAI.tower.range*2;
+        if (instance.towerAI.tower.upgrade.Length > 0){
+            instance.upgrade1Button.SetActive(true);
         }
     }
     public void ToolipSelectedTower(){

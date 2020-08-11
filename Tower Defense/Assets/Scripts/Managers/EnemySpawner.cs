@@ -32,12 +32,7 @@ public class EnemySpawner : MonoBehaviour
             cannotSpawn.Clear();
             RestartWaveButton.CanRestart = true;
             
-            spawnPos = new Vector2(Random.Range(-spawnBox.x, spawnBox.x), Random.Range(-spawnBox.y, spawnBox.y));
-            if (Random.value > 0.5f){
-                spawnPos = new Vector2(spawnBox.x*(spawnPos.x / Mathf.Abs(spawnPos.x)), spawnPos.y);
-            } else {
-                spawnPos = new Vector2(spawnPos.x, spawnBox.y*(spawnPos.y / Mathf.Abs(spawnPos.y)));
-            }
+            spawnPos = new Vector2(-spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
             spawnChanceScript.UpdateSpawnChances(wave);
             StartCoroutine("SpawnWave");
         }

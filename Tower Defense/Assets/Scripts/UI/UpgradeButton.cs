@@ -43,6 +43,7 @@ public class UpgradeButton : MonoBehaviour
             _createdTower.GetComponent<TowerAI>().hp = selectedTower.gameObject.GetComponent<TowerAI>().hp + (upgradedTower.maxHp-tower.maxHp);
             Destroy(selectedTower.gameObject);
             MoneyManager.GainMoney(-upgradeCost);
+            Selector.SelectTower(_createdTower);
         }
     }
 
