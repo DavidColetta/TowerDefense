@@ -26,7 +26,8 @@ public class UpgradeButton : MonoBehaviour
                 upgradeCost = upgradedTower.price - tower.price;
                 upgradeCostDisplay.SetText(upgradeCost.ToString());
             } else {
-                gameObject.SetActive(false);
+                if (!LeanTween.isTweening(gameObject))
+                    LeanTween.scale(GetComponent<RectTransform>(), new Vector2(0,0), 0.2f).setOnComplete(ActuallyDisable);
             }
 
             if (upgradeCost <= MoneyManager.money){
@@ -57,5 +58,20 @@ public class UpgradeButton : MonoBehaviour
             Transform _range = Selector.selectedObject.transform.Find("Range");
             _range.localScale = Vector2.one*tower.range*2;
         } 
+    }
+    private void ActuallyDisable(){
+        if (tower.upgrade.Length > upgradeNumb){
+            gameObject.SetActive(true);
+        } else {
+            gameObject.SetActive(false);
+        }
+    }
+    public void Enable() {
+        gameObject.SetActive(true);
+        GetComponent<MenuButtonTween>().OnEnable();
+        tower = Selector.selectedObject.GetComponent<TowerAI>().tower;
+        if (tower.upgrade.Length <= upgradeNumb){
+            gameObject.SetActive(false);
+        }
     }
 }

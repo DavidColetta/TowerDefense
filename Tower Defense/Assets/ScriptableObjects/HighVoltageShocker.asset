@@ -18,8 +18,8 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: f0eb3ebf96df696439c52308830e715b, type: 3}
   price: 600
   level: 1
-  maxHp: 75
+  maxHp: 50
   attackDmg: 6
-  attackRate: 0.7
+  attackRate: 0.8
   range: 2.5
   upgrade: []

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ChangeScene : MonoBehaviour
 {
     public void GoToScene(int scene){
-        SceneChanger sceneChanger = GameObject.Find("Manager").GetComponent<SceneChanger>();
-        sceneChanger.GoToScene(scene);
+        SceneChanger.GoToScene_Static(scene);
     }
 }

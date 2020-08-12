@@ -65,7 +65,7 @@ public class Selector : MonoBehaviour
         if (instance.towerAI.tower.range > 0)
             instance.rangeDisplay.transform.localScale = Vector2.one*instance.towerAI.tower.range*2;
         if (instance.towerAI.tower.upgrade.Length > 0){
-            instance.upgrade1Button.SetActive(true);
+            instance.upgrade1Button.GetComponent<UpgradeButton>().Enable();
         }
     }
     public void ToolipSelectedTower(){

@@ -418,6 +418,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.2, y: 1.2}
   tweenOnEnable: 1
+  enableTweenDelay: 0.1
   preferedSiblingIndex: 3
 --- !u!1 &80973928
 GameObject:
@@ -430,7 +431,6 @@ GameObject:
   - component: {fileID: 80973931}
   - component: {fileID: 80973930}
   - component: {fileID: 80973929}
-  - component: {fileID: 80973932}
   - component: {fileID: 80973934}
   - component: {fileID: 80973935}
   - component: {fileID: 80973936}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0076a23447e370e4a838dbcb0e30d18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMoney: 350
+  startingMoney: 6727
   moneyDisplayTMP: {fileID: 737471330}
   renderCanvas: {fileID: 693715983}
   moneyPopup: {fileID: 2862346412038285676, guid: 907bd17a3eeab5446b0a1fa743dce8b0,
@@ -490,19 +490,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &80973932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80973928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422a7ef77f6b95c4aa868ea133af0bb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficultyLevel: 2
 --- !u!114 &80973933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +541,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80973928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0
@@ -565,7 +552,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a237b711ce0bebe4783dc5b38c8dc40b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -587,19 +574,19 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Positions:
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 4, z: 1}
+  - {x: 3, y: 4, z: 1}
+  - {x: 3, y: 3, z: 1}
+  - {x: 2, y: 3, z: 1}
+  - {x: 1, y: 3, z: 1}
+  - {x: 0, y: 3, z: 1}
+  - {x: 0, y: 2, z: 1}
+  - {x: 0, y: 1, z: 1}
   - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
+  - {x: 1, y: 1, z: 1}
+  - {x: 2, y: 1, z: 1}
+  - {x: 2, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
@@ -620,7 +607,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.304348
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -632,8 +619,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 0.49019608}
-      key1: {r: 0, g: 0, b: 0, a: 0.49019608}
+      key0: {r: 0, g: 0, b: 0, a: 0.6862745}
+      key1: {r: 0, g: 0, b: 0, a: 0.6862745}
       key2: {r: 0, g: 0, b: 0, a: 0.49019608}
       key3: {r: 0, g: 0, b: 0, a: 0.49019608}
       key4: {r: 0, g: 0, b: 0, a: 0.49019608}
@@ -648,7 +635,7 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 771
+      atime0: 0
       atime1: 65535
       atime2: 65535
       atime3: 65535
@@ -659,8 +646,8 @@ LineRenderer:
       m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 5
+    numCapVertices: 5
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -1427,6 +1414,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 408823783}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &408823780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,6 +1554,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.2, y: 1.2}
   tweenOnEnable: 1
+  enableTweenDelay: 0.1
   preferedSiblingIndex: 2
 --- !u!1 &425048181
 GameObject:
@@ -1809,6 +1808,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 564277291}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &564277287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,6 +1953,7 @@ MonoBehaviour:
   defaultScale: {x: 0.85, y: 0.85}
   hoverScale: {x: 1, y: 1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!1 &672349240
 GameObject:
@@ -2042,6 +2053,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 672349247}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &672349243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,6 +2144,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.15, y: 1.15}
   tweenOnEnable: 1
+  enableTweenDelay: 0.1
   preferedSiblingIndex: 2
 --- !u!114 &672349248
 MonoBehaviour:
@@ -2614,6 +2637,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 776361909}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &776361905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,6 +2728,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.15, y: 1.15}
   tweenOnEnable: 1
+  enableTweenDelay: 0.1
   preferedSiblingIndex: 2
 --- !u!114 &776361910
 MonoBehaviour:
@@ -2984,6 +3019,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 932769316}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &932769312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3118,6 +3164,7 @@ MonoBehaviour:
   defaultScale: {x: 0.85, y: 0.85}
   hoverScale: {x: 1, y: 1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!1 &1026350002
 GameObject:
@@ -3417,6 +3464,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1114162864}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1114162860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3551,6 +3609,7 @@ MonoBehaviour:
   defaultScale: {x: 0.85, y: 0.85}
   hoverScale: {x: 1, y: 1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!1 &1174073656
 GameObject:
@@ -3562,6 +3621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1174073657}
   - component: {fileID: 1174073658}
+  - component: {fileID: 1174073659}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -3602,6 +3662,18 @@ MonoBehaviour:
   thisCamera: {fileID: 519420031}
   minZoom: 1
   maxZoom: 10
+--- !u!114 &1174073659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174073656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee11429b09c60204f9b1c47d1ef16180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196130011
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,6 +3972,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.1, y: 1.1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: 3
 --- !u!1 &1310489249
 GameObject:
@@ -4142,6 +4215,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.2, y: 1.2}
   tweenOnEnable: 1
+  enableTweenDelay: 0.1
   preferedSiblingIndex: 3
 --- !u!1 &1349047045
 GameObject:
@@ -8339,11 +8413,23 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 80973929}
         m_MethodName: SpawnTowerButtonPressed
-        m_Mode: 3
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 9ee6255fb29a4a84daf4e86c52b2c694,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Tower, Assembly-CSharp
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1792504185}
+        m_MethodName: _MouseClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8367,8 +8453,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6b3a823ae8712544ba638cd6c08b7c98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8406,7 +8492,7 @@ MonoBehaviour:
           m_MethodName: CreateTowerTooltip
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 0e746caf9db08ef48905f31f9be3a2ff,
+            m_ObjectArgument: {fileID: 11400000, guid: 9ee6255fb29a4a84daf4e86c52b2c694,
               type: 2}
             m_ObjectArgumentAssemblyTypeName: Tower, Assembly-CSharp
             m_IntArgument: 0
@@ -8482,63 +8568,8 @@ MonoBehaviour:
   defaultScale: {x: 0.85, y: 0.85}
   hoverScale: {x: 1, y: 1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
---- !u!1 &1813398149
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1813398152}
-  - component: {fileID: 1813398151}
-  - component: {fileID: 1813398150}
-  m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1813398150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813398149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac1dbb4609678842a2f69e3af99a1cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1813398151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813398149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da7c0f570c19e6e40a23478f68059887, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1813398152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813398149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825926400
 GameObject:
   m_ObjectHideFlags: 0
@@ -8781,10 +8812,21 @@ MonoBehaviour:
         m_MethodName: SpawnTowerButtonPressed
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9ee6255fb29a4a84daf4e86c52b2c694,
+          m_ObjectArgument: {fileID: 11400000, guid: 1e5b9668306f4364b808edcba105104b,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: Tower, Assembly-CSharp
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1959853035}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8808,7 +8850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b3a823ae8712544ba638cd6c08b7c98, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 763efd7224738834a8c01e0e12108e00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8847,7 +8889,7 @@ MonoBehaviour:
           m_MethodName: CreateTowerTooltip
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 9ee6255fb29a4a84daf4e86c52b2c694,
+            m_ObjectArgument: {fileID: 11400000, guid: 1e5b9668306f4364b808edcba105104b,
               type: 2}
             m_ObjectArgumentAssemblyTypeName: Tower, Assembly-CSharp
             m_IntArgument: 0
@@ -8923,6 +8965,7 @@ MonoBehaviour:
   defaultScale: {x: 0.85, y: 0.85}
   hoverScale: {x: 1, y: 1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!1 &1970494151
 GameObject:
@@ -9311,6 +9354,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.1, y: 1.1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: 3
 --- !u!1 &2036543510
 GameObject:
@@ -9413,6 +9457,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.2, y: 1.2}
   tweenOnEnable: 1
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!114 &2036543514
 MonoBehaviour:
@@ -9690,6 +9735,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2070993326}
+        m_MethodName: _MouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2070993322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9824,6 +9880,7 @@ MonoBehaviour:
   defaultScale: {x: 0.85, y: 0.85}
   hoverScale: {x: 1, y: 1}
   tweenOnEnable: 0
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!1 &2095860650
 GameObject:
@@ -10301,6 +10358,7 @@ MonoBehaviour:
   defaultScale: {x: 1, y: 1}
   hoverScale: {x: 1.2, y: 1.2}
   tweenOnEnable: 1
+  enableTweenDelay: 0
   preferedSiblingIndex: -1
 --- !u!114 &2128958847
 MonoBehaviour:
@@ -10345,3 +10403,72 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1001 &2864178996802932530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2864178996063800759, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_Name
+      value: Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864178996063800762, guid: 9351ebea67ef33e42bd2b8ba9eda8104,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9351ebea67ef33e42bd2b8ba9eda8104, type: 3}

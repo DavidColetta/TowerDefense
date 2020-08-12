@@ -7,9 +7,6 @@ public class DifficultyManager : MonoBehaviour
     public int difficultyLevel = 2;
     public static float localDifficulty;
     public static float difficulty;
-    void Start()
-    {
-    }
 
     void Update()
     {

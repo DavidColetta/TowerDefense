@@ -15,6 +15,8 @@ public class MenuButtonTween : MonoBehaviour
     [SerializeField]
     bool tweenOnEnable = true;
     [SerializeField]
+    float enableTweenDelay = 0f;
+    [SerializeField]
     int preferedSiblingIndex = -1;
     private Button button;
     private bool isButton = false;
@@ -30,7 +32,7 @@ public class MenuButtonTween : MonoBehaviour
     public void OnEnable() {
         if (tweenOnEnable){
             rectTransform.localScale = new Vector2(0f,0f);
-            LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true);
+            LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true).setDelay(enableTweenDelay);
         }
     }
     public void _MouseEnter() {
@@ -43,8 +45,22 @@ public class MenuButtonTween : MonoBehaviour
         }
     }
     public void _MouseExit() {
-        if (preferedSiblingIndex >= 0)
-            transform.SetSiblingIndex(preferedSiblingIndex);
-        LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true);
+        if ((Vector2)rectTransform.localScale != defaultScale){
+            if (preferedSiblingIndex >= 0)
+                transform.SetSiblingIndex(preferedSiblingIndex);
+            LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true);
+        }
+    }
+    public void _MouseClick(){
+        LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true).setEase(LeanTweenType.punch);
+    }
+    private void Update() {
+        if (isButton){
+            if (!LeanTween.isTweening(gameObject)){
+                if (!button.interactable){
+                    _MouseExit();
+                }
+            }
+        }
     }
 }

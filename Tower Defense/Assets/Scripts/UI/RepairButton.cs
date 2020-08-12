@@ -32,9 +32,11 @@ public class RepairButton : MonoBehaviour
     }
 
     public void RepairTower(){
-        if (repairCost <= MoneyManager.money){
-            towerAI.hp = towerAI.tower.maxHp;
-            MoneyManager.GainMoney(-repairCost);
+        if (Selector.selectedObject){
+            if (repairCost <= MoneyManager.money){
+                towerAI.hp = towerAI.tower.maxHp;
+                MoneyManager.GainMoney(-repairCost);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ public class AnimateEnemyPunch : MonoBehaviour
     void Update()
     {
         if (enemyAI.target){
-            animator.SetFloat("AttackSpeed", 1f/enemyAI.enemy.attackRate);
+            animator.SetFloat("AttackSpeed", 1f/(enemyAI.enemy.attackRate/enemyAI.speedMultiplier));
         } else {
             animator.SetFloat("AttackSpeed", -2f);
         }

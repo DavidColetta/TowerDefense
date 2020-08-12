@@ -221,6 +221,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hurtParticles: {fileID: 9004610638690518784, guid: aa0e5765c5d9f834f9aca79cdd7fdefe,
     type: 3}
+  speedMultiplier: 1
 --- !u!114 &3750046421976770885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +242,7 @@ MonoBehaviour:
   reachedTower: 0
   cannotTarget: []
   direction: {x: 0, y: 0, z: 0, w: 0}
+  speed: 0
 --- !u!114 &3750046421976770880
 MonoBehaviour:
   m_ObjectHideFlags: 0

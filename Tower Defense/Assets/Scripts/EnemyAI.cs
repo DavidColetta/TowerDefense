@@ -12,6 +12,10 @@ public class EnemyAI : MonoBehaviour
     public GameObject target;
     private Rigidbody2D rb;
     public GameObject hurtParticles;
+    private List<Debuff> debuffs = new List<Debuff>();
+    private List<Debuff> debuffsToRemove = new List<Debuff>();
+    private List<Debuff> debuffsToAdd = new List<Debuff>();
+    public float speedMultiplier = 1;
 
 
     void Awake()
@@ -22,9 +26,13 @@ public class EnemyAI : MonoBehaviour
 
         hp = Mathf.RoundToInt(enemy.maxHp * DifficultyManager.difficulty);
         rb.mass = enemy.maxHp/10;
+        pathfinding.speed = speedMultiplier * enemy.speed;
     }
     void FixedUpdate()
     {
+        HandleDebuffs();
+        pathfinding.speed = speedMultiplier * enemy.speed;
+
         if (pathfinding.reachedEndOfPath){
             target = pathfinding.target;
         } else if (pathfinding.reachedTower && !target){
@@ -39,7 +47,7 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, angle), 720*Time.deltaTime);
 
             if (!IsInvoking("Attack")){
-                InvokeRepeating("Attack", enemy.attackRate, enemy.attackRate);
+                InvokeRepeating("Attack", enemy.attackRate / speedMultiplier, enemy.attackRate);
             }
         } else {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, pathfinding.direction, 360*Time.deltaTime);
@@ -89,9 +97,44 @@ public class EnemyAI : MonoBehaviour
             if (hp <= 0){
                 Die();
             }
-            if (damage - enemy.defense > 0 && hurtParticles){
-                Instantiate(hurtParticles, transform.position, Quaternion.identity);
+            if (hurtParticles){
+                if (damage - enemy.defense > 0 || armorPiercing)
+                    Instantiate(hurtParticles, transform.position, Quaternion.identity);
             }
+        }
+    }
+    public void AddDebuff(Debuff debuff){
+        if (!debuffsToAdd.Exists(x => x.GetType() == debuff.GetType())){
+            debuffsToAdd.Add(debuff);
+            if (debuffs.Exists(x => x.GetType() == debuff.GetType()))
+                debuffs.Find(x => x.GetType() == debuff.GetType()).Remove();
+        }
+    }
+    public void RemoveDebuff(Debuff debuff){
+        if (!debuffsToRemove.Exists(x => x.GetType() == debuff.GetType()))
+            debuffsToRemove.Add(debuff);
+    }
+    private void HandleDebuffs(){
+        if (debuffsToRemove.Count > 0){
+            foreach (Debuff debuff in debuffsToRemove)
+            {
+                debuffs.Remove(debuff);
+            }
+            debuffsToRemove.Clear();
+        }
+        if (debuffsToAdd.Count > 0){;
+            foreach (Debuff debuff in debuffsToAdd)
+            {
+                if (!debuffs.Exists(x => x.GetType() == debuff.GetType())){
+                    debuffs.Add(debuff);
+                }
+            }
+            debuffsToAdd.Clear();
+        }
+
+        foreach (Debuff debuff in debuffs)
+        {
+            debuff.Update();
         }
     }
     void Die(){

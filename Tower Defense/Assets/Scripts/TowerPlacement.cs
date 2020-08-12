@@ -52,7 +52,7 @@ public class TowerPlacement : MonoBehaviour
         if (!PauseManager.paused){
             if (Input.GetMouseButtonDown(0)){
                 if (!EventSystem.current.IsPointerOverGameObject()){
-                    if (CanPlace && MoneyManager.money >= tower.price){
+                    if (CanPlace && MoneyManager.money >= tower.price && !bc.IsTouchingLayers(CollisionMask)){
                         GameObject _placedTower = Instantiate(tower.towerObj, transform.position, transform.rotation, parent.transform);
                         MoneyManager.GainMoney(tower.price * -1);
                         Selector.SelectTower(_placedTower);

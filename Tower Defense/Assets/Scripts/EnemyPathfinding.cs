@@ -20,6 +20,7 @@ public class EnemyPathfinding : MonoBehaviour
     public Quaternion direction;
     Seeker seeker;
     Rigidbody2D rb;
+    public float speed;
 
     void Start(){
         seeker = GetComponent<Seeker>();
@@ -105,7 +106,7 @@ public class EnemyPathfinding : MonoBehaviour
             direction = Quaternion.Euler(0, 0, angle);
         }
 
-        Vector2 moveVector = lookPos * enemy.speed * Time.deltaTime;
+        Vector2 moveVector = lookPos * speed * Time.deltaTime;
         rb.position += moveVector;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

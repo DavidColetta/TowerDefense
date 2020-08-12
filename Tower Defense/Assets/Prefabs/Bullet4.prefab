@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4732160250739290911}
   - component: {fileID: 1554955736527012425}
   m_Layer: 0
-  m_Name: Bullet1
+  m_Name: Bullet4
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,10 @@ MonoBehaviour:
   piercing: 1
   friendly: 1
   armorPiercing: 0
+  debuffs: 01000000
+  debuffDurations:
+  - 0
+  - 10
   onDeath: {fileID: 0}
   expansion: {x: 0, y: 0}
   ignore: []
@@ -96,7 +100,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5ed4856ffa4403744bdb30b05aeeecb6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.20754719, g: 0.8415092, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -223,8 +227,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.4245283, g: 0, b: 0, a: 1}
-      key1: {r: 0.4245283, g: 0, b: 0, a: 1}
+      key0: {r: 0, g: 0.8, b: 1, a: 1}
+      key1: {r: 0, g: 0.8000001, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
