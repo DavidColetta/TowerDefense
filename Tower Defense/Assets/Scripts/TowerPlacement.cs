@@ -35,11 +35,21 @@ public class TowerPlacement : MonoBehaviour
             Offset += new Vector2(0f, -0.5f);
         }
 
-        transform.Find("Range").localScale = Vector2.one*tower.range*2;
+        Transform range = transform.Find("Range");
+        range.localScale = Vector2.one*tower.range*2;
+        if (tower.name == "Drill"){
+            transform.Rotate(0f, 0f, 180f);
+            range.gameObject.AddComponent<DrillRange>();
+        }
     }
     private void FixedUpdate() {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector2(Mathf.Round(mouseWorldPosition.x), Mathf.Round(mouseWorldPosition.y)) + Offset;
+        transform.position = new Vector2(Mathf.Round(mouseWorldPosition.x), Mathf.Round(mouseWorldPosition.y));
+        if (transform.rotation.eulerAngles.z%180 == 0){
+            transform.position += (Vector3)Offset;
+        } else {
+            transform.position += new Vector3(Offset.y, Offset.x, 0);
+        }
 
         if (bc.IsTouchingLayers(CollisionMask)){
             CanPlace = false;

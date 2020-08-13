@@ -30,7 +30,6 @@ public class EnemySpawner : MonoBehaviour
             spawnCurrency = wave * waveMultiplier;
             spawnSpeed ++;
             cannotSpawn.Clear();
-            RestartWaveButton.CanRestart = true;
             
             spawnPos = new Vector2(-spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
             spawnChanceScript.UpdateSpawnChances(wave);

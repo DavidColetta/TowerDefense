@@ -10,8 +10,7 @@ public class ProjectileAI : MonoBehaviour
     public int piercing = 1;
     public bool friendly = true;
     public bool armorPiercing = false;
-    public List<int> debuffs = new List<int>();
-    public float[] debuffDurations;
+    public List<Vector2> debuffs = new List<Vector2>();
     public GameObject onDeath;
     public Vector2 expansion = new Vector2(0f, 0f);
     private Rigidbody2D rb;
@@ -49,15 +48,15 @@ public class ProjectileAI : MonoBehaviour
                 EnemyAI enemyAI = collidingObj.GetComponent<EnemyAI>();
                 if (!ignore.Contains(collidingObj)){
                     enemyAI.TakeDamage(attackDmg, armorPiercing);
-                    foreach (int debuffID in debuffs)
+                    foreach (Vector2 debuffID in debuffs)
                     {
-                        switch (debuffID)
+                        switch (debuffID.x)
                         {
                             case 0: 
-                                enemyAI.AddDebuff(new FireDebuff(debuffDurations[0], enemyAI));
+                                enemyAI.AddDebuff(new FireDebuff(debuffID.y, enemyAI));
                                 break;
                             case 1:
-                                enemyAI.AddDebuff(new SlowDebuff(debuffDurations[1], enemyAI));
+                                enemyAI.AddDebuff(new SlowDebuff(debuffID.y, enemyAI));
                                 break;
                             default:
                                 break;

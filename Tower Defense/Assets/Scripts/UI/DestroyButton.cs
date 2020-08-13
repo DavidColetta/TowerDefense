@@ -25,7 +25,7 @@ public class DestroyButton : MonoBehaviour
     }
 
     public void DestroyTower(){
-        towerAI.Die();
+        Destroy(towerAI.gameObject);
         MoneyManager.GainMoney(destroyCost);
     }
 }

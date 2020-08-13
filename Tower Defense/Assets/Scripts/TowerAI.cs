@@ -12,7 +12,7 @@ public class TowerAI : MonoBehaviour
     public Quaternion dir;
     private BoxCollider2D bc;
     private SpriteRenderer SpriteR;
-    private GameObject target;
+    protected GameObject target;
     public int hp;
     void Awake()
     {
@@ -24,9 +24,11 @@ public class TowerAI : MonoBehaviour
         //Update A* path to include this Tower
         //AstarPath.active.UpdateGraphs (bc.bounds);
 
+        dir = transform.rotation;
+
         InvokeRepeating("UpdateTarget", 0f, 1f);
     }
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (projectile){
             if (target){
@@ -56,6 +58,8 @@ public class TowerAI : MonoBehaviour
         SpriteR.color = new Color(1f, 1f, 1f, 1f);
     }
     public void Die(){
+        if (tower.price >= 250)
+            RestartWaveButton.CanRestart = true;
         Destroy(gameObject);
     }
     private void OnDestroy() {
@@ -83,7 +87,7 @@ public class TowerAI : MonoBehaviour
         _projectileAI.range = tower.range;
     }
 
-    void UpdateTarget(){
+    public virtual void UpdateTarget(){
         target = FindClosestEnemy();
     }
     GameObject FindClosestEnemy(){

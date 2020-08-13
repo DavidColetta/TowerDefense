@@ -53,6 +53,10 @@ MonoBehaviour:
   piercing: 1
   friendly: 1
   armorPiercing: 0
+  debuffs: 0000000001000000
+  debuffDurations:
+  - 10
+  - 0
   onDeath: {fileID: 0}
   expansion: {x: 0, y: 0}
   ignore: []

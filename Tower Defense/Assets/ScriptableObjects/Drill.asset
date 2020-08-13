@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6abaae057720ce4e8e73803d0e30d84, type: 3}
-  m_Name: Railgun
+  m_Name: Drill
   m_EditorClassIdentifier: 
-  towerObj: {fileID: 7010071345839317058, guid: 692b13e3973165e4da18f20b61a158f9,
+  towerObj: {fileID: 7652072229400530959, guid: 7c24a7eed1b47704ebe69ec614ac2761,
     type: 3}
-  name: Railgun
-  sprite: {fileID: 21300000, guid: 6b3a823ae8712544ba638cd6c08b7c98, type: 3}
-  price: 550
+  name: Drill
+  sprite: {fileID: 21300000, guid: 40d66ec7f16721a4da7e2c648b51e4f7, type: 3}
+  price: 450
   level: 0
-  maxHp: 55
-  attackDmg: 12
-  attackRate: 3
-  range: 12
-  upgrade:
-  - {fileID: 11400000, guid: 2f0ab29404f18204881bab40e9a12deb, type: 2}
+  maxHp: 50
+  attackDmg: 1
+  attackRate: 0.15
+  range: 6
+  upgrade: []

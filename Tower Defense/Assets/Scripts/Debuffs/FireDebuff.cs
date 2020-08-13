@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FireDebuff : Debuff
 {
-    private float tickTime = 1f;
-    private float timeSinceLastTick = 0;
+    private float tickTime = 0.3f;
+    private float timeSinceLastTick = 100f;
+    private GameObject fireParticles = (GameObject)Resources.Load("prefabs/FireParticles", typeof(GameObject));
     public FireDebuff(float duration, EnemyAI target) : base(target, duration){
         this.duration = duration;
     }
@@ -14,8 +15,8 @@ public class FireDebuff : Debuff
             timeSinceLastTick += Time.deltaTime;
             if (timeSinceLastTick >= tickTime){
                 timeSinceLastTick = 0;
-                Debug.Log("FireTick");
-                target.TakeDamage(1, true);
+                target.TakeDamage(1, true, false);
+                GameObject.Instantiate(fireParticles, target.gameObject.transform.position, Quaternion.identity);
             }
         }
 

@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject target;
     private Rigidbody2D rb;
     public GameObject hurtParticles;
-    private List<Debuff> debuffs = new List<Debuff>();
+    public List<Debuff> debuffs = new List<Debuff>();
     private List<Debuff> debuffsToRemove = new List<Debuff>();
     private List<Debuff> debuffsToAdd = new List<Debuff>();
     public float speedMultiplier = 1;
@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         hp = Mathf.RoundToInt(enemy.maxHp * DifficultyManager.difficulty);
-        rb.mass = enemy.maxHp/10;
+        rb.mass = (enemy.maxHp + enemy.defense*2)/10;
         pathfinding.speed = speedMultiplier * enemy.speed;
     }
     void FixedUpdate()
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
     }
     
     #region Take Damage
-    public void TakeDamage(int damage, bool armorPiercing = false){
+    public void TakeDamage(int damage, bool armorPiercing = false, bool showHurtParticles = true){
         if (hp > 0){
             if (!armorPiercing)
                 hp -= Mathf.Max(damage - enemy.defense, 0);
@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
             if (hp <= 0){
                 Die();
             }
-            if (hurtParticles){
+            if (hurtParticles && showHurtParticles){
                 if (damage - enemy.defense > 0 || armorPiercing)
                     Instantiate(hurtParticles, transform.position, Quaternion.identity);
             }

@@ -16,10 +16,10 @@ MonoBehaviour:
     type: 3}
   name: Railgun Mk 2
   sprite: {fileID: 21300000, guid: 6b3a823ae8712544ba638cd6c08b7c98, type: 3}
-  price: 1150
+  price: 1300
   level: 1
-  maxHp: 75
+  maxHp: 65
   attackDmg: 20
   attackRate: 3
-  range: 16
+  range: 14
   upgrade: []
