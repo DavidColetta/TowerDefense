@@ -13,6 +13,12 @@ public class DrillRange : MonoBehaviour
     private void OnEnable() {
         StartCoroutine("FixRange");
     }
+    private void Update() {
+        if (transform.localScale.y != 1){
+            transform.localScale = new Vector3(transform.localScale.x/2, 1, 0);
+            transform.localPosition = new Vector3(transform.localScale.x/2, 0, 0);
+        }
+    }
     IEnumerator FixRange(){
         yield return new WaitForEndOfFrame();
         spriteRenderer.sprite = square;

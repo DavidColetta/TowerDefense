@@ -38,7 +38,7 @@ public class UpgradeButton : MonoBehaviour
         }
     }
     public void UpgradeTower(){
-        if (upgradeCost <= MoneyManager.money){
+        if (upgradeCost <= MoneyManager.money && tower.upgrade.Length > upgradeNumb){
             Transform selectedTower = Selector.selectedObject.transform;
             GameObject _createdTower = Instantiate(upgradedTower.towerObj, selectedTower.position, selectedTower.rotation, selectedTower.parent);
             _createdTower.GetComponent<TowerAI>().hp = selectedTower.gameObject.GetComponent<TowerAI>().hp + (upgradedTower.maxHp-tower.maxHp);
@@ -60,15 +60,14 @@ public class UpgradeButton : MonoBehaviour
         } 
     }
     private void ActuallyDisable(){
+        Tooltip.HideTooltip_Static();
         if (tower.upgrade.Length > upgradeNumb){
             gameObject.SetActive(true);
         } else {
             gameObject.SetActive(false);
         }
     }
-    public void Enable() {
-        gameObject.SetActive(true);
-        GetComponent<MenuButtonTween>().OnEnable();
+    public void OnEnable() {
         tower = Selector.selectedObject.GetComponent<TowerAI>().tower;
         if (tower.upgrade.Length <= upgradeNumb){
             gameObject.SetActive(false);

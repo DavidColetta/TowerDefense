@@ -18,6 +18,7 @@ MonoBehaviour:
   maxHp: 8
   attackDmg: 4
   speed: 2
-  attackRate: 0.8
+  attackRate: 0.7
   range: 0
+  defense: 0
   spawnCost: 4

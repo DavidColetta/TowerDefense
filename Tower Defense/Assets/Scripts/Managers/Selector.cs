@@ -14,6 +14,7 @@ public class Selector : MonoBehaviour
     private TowerAI towerAI;
     private GameObject rangeDisplay;
     public GameObject upgrade1Button;
+    public GameObject upgrade2Button;
     private static Selector instance;
     
     void Awake()
@@ -65,7 +66,10 @@ public class Selector : MonoBehaviour
         if (instance.towerAI.tower.range > 0)
             instance.rangeDisplay.transform.localScale = Vector2.one*instance.towerAI.tower.range*2;
         if (instance.towerAI.tower.upgrade.Length > 0){
-            instance.upgrade1Button.GetComponent<UpgradeButton>().Enable();
+            instance.upgrade1Button.SetActive(true);
+        }
+        if (instance.towerAI.tower.upgrade.Length > 1){
+            instance.upgrade2Button.SetActive(true);
         }
     }
     public void ToolipSelectedTower(){

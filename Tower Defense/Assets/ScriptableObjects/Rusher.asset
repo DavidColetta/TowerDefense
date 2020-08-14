@@ -16,9 +16,9 @@ MonoBehaviour:
     type: 3}
   name: Rusher
   maxHp: 20
-  attackDmg: 10
+  attackDmg: 5
   speed: 4
   attackRate: 0.3
   range: 0
   defense: 0
-  spawnCost: 20
+  spawnCost: 30

@@ -30,14 +30,15 @@ public class DebuffTowerAI : TowerAI
         GameObject closest = null;
         float distance = tower.range;
         Vector3 position = transform.position;
-        foreach (GameObject potentialTarget in enemies)
-        {
-            if (!potentialTarget.GetComponent<EnemyAI>().debuffs.Exists(x => x.GetType() == debuff.GetType())){
-                float _distance = Vector2.Distance(potentialTarget.transform.position, position);
-                if (_distance < distance)
-                {
-                    closest = potentialTarget;
-                    distance = _distance;
+        foreach (GameObject potentialTarget in enemies){
+            float _distance = Vector2.Distance(potentialTarget.transform.position, position);
+            if (_distance < distance){
+                EnemyAI enemyAI = potentialTarget.GetComponent<EnemyAI>();
+                if (enemyAI != null){
+                    if (!enemyAI.debuffs.Exists(x => x.GetType() == debuff.GetType())){
+                        closest = potentialTarget;
+                        distance = _distance;
+                    }
                 }
             }
         }

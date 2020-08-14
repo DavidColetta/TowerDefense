@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
 {
-    public int difficultyLevel = 2;
+    public int _difficultyLevel = 2;
+    public static int difficultyLevel;
     public static float localDifficulty;
     public static float difficulty;
-
-    void Update()
-    {
-        localDifficulty = (0.9f + EnemySpawner.wave*0.1f);
-        difficulty = (difficultyLevel*0.5f) * localDifficulty;
+    private void Awake() {
+        difficultyLevel = _difficultyLevel;
+        UpdateDifficulty();
+    }
+    public static void UpdateDifficulty(float difficultyMultiplier = 1f){
+        localDifficulty = (0.5f + EnemySpawner.wave*0.1f);
+        difficulty = (difficultyLevel*0.5f) * (0.5f+localDifficulty) * difficultyMultiplier;
     }
 }

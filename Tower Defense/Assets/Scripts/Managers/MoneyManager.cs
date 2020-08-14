@@ -36,7 +36,7 @@ public class MoneyManager : MonoBehaviour
         _moneyPopupScript.value += amount;
         _moneyPopupScript.dissapearTimer = 1f;
 
-        if (amount >= 60){
+        if (amount >= Mathf.RoundToInt(99*DifficultyManager.localDifficulty)){
             _moneyPopupScript.isBold = true;
         }
     }

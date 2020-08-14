@@ -20,6 +20,7 @@ MonoBehaviour:
   level: 0
   maxHp: 50
   attackDmg: 1
-  attackRate: 0.15
+  attackRate: 0.1
   range: 6
-  upgrade: []
+  upgrade:
+  - {fileID: 11400000, guid: 3e7ad93c79fbbac42bc659780cd81e8c, type: 2}

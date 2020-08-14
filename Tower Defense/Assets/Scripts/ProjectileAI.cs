@@ -83,7 +83,11 @@ public class ProjectileAI : MonoBehaviour
     }
     private void Die(){
         if (onDeath != null){
-            Instantiate(onDeath, transform.position, Quaternion.identity, transform.parent);
+            GameObject _onDeath = Instantiate(onDeath, transform.position, Quaternion.identity, transform.parent);
+            ProjectileAI _projectileAI = onDeath.GetComponent<ProjectileAI>();
+            if (_projectileAI != null && ignore.Count > 0){
+                _projectileAI.ignore.AddRange(ignore);
+            }
         }
         Destroy(gameObject);
     }

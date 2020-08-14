@@ -9,21 +9,29 @@ public class RestartWaveButton : MonoBehaviour
     private Button button;
     private TextMeshProUGUI nextWaveTextTMP;
     public static bool CanRestart = false;
-    void Start()
+    public static RestartWaveButton instance;
+    void Awake()
     {
+        CanRestart = false;
+        instance = this;
         button = GetComponent<Button>();
         nextWaveTextTMP = transform.Find("RestartWaveText").gameObject.GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
+    public static void GainRestartWave(){
+        CanRestart = true;
+        instance.gameObject.SetActive(true);
+    }
     void Update()
     {
-        if (EnemySpawner.waveInProgress || !CanRestart){
-            button.interactable = false;
+        if (!CanRestart){
+            instance.gameObject.SetActive(false);
         }
-        if (!EnemySpawner.waveInProgress && !button.interactable && CanRestart){
-            button.interactable = true;
+        if (EnemySpawner.waveInProgress){
+            button.interactable = false;
+        } else if (!button.interactable){
             nextWaveTextTMP.SetText("Restart Wave " + (EnemySpawner.wave));
+            button.interactable = true;
         }
     }   
 }

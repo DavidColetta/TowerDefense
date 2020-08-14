@@ -16,11 +16,12 @@ MonoBehaviour:
     type: 3}
   name: Turret
   sprite: {fileID: 21300000, guid: 28546d0e27b45974aa23f2bf09c02fa0, type: 3}
-  price: 150
+  price: 125
   level: 0
   maxHp: 40
-  attackDmg: 3
+  attackDmg: 4
   attackRate: 0.5
-  range: 6
+  range: 5
   upgrade:
   - {fileID: 11400000, guid: 7385f6a3476ad2b429d41d774610cd79, type: 2}
+  - {fileID: 11400000, guid: 3e110196e1e689341920f955ab5aca17, type: 2}

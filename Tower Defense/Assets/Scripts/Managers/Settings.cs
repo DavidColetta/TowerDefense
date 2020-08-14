@@ -35,4 +35,7 @@ public class Settings : MonoBehaviour
     public void SetFullscreen(bool isFullscreen){
         Screen.fullScreen = isFullscreen;
     }
+    public void QuitApplication(){
+        Application.Quit();
+    }
 }

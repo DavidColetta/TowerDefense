@@ -17,8 +17,8 @@ MonoBehaviour:
   name: Armored Zombie
   maxHp: 20
   attackDmg: 9
-  speed: 1.5
+  speed: 1.3
   attackRate: 1
   range: 0
   defense: 4
-  spawnCost: 20
+  spawnCost: 30

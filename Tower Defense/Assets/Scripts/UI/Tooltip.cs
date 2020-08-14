@@ -13,6 +13,8 @@ public class Tooltip : MonoBehaviour
         instance = this;
         backgroundRectTransform = transform.Find("Tooltip Background").GetComponent<RectTransform>();
         tooltipText = transform.Find("Tooltip Text").GetComponent<TextMeshProUGUI>();
+
+        HideTooltip();
     }
     private void Update() {
         transform.position = Input.mousePosition;

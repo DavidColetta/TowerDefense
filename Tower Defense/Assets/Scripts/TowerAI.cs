@@ -26,7 +26,9 @@ public class TowerAI : MonoBehaviour
 
         dir = transform.rotation;
 
-        InvokeRepeating("UpdateTarget", 0f, 1f);
+        if (projectile){
+            InvokeRepeating("UpdateTarget", 0f, 1f);
+        }
     }
     public virtual void FixedUpdate()
     {
@@ -58,8 +60,8 @@ public class TowerAI : MonoBehaviour
         SpriteR.color = new Color(1f, 1f, 1f, 1f);
     }
     public void Die(){
-        if (tower.price >= 250)
-            RestartWaveButton.CanRestart = true;
+        if (tower.price >= 150*DifficultyManager.localDifficulty)
+            RestartWaveButton.GainRestartWave();
         Destroy(gameObject);
     }
     private void OnDestroy() {

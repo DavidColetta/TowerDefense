@@ -16,7 +16,8 @@ public class DrillAI : TowerAI
     }
 
     public override void UpdateTarget(){
-        RaycastHit2D ray = Physics2D.Raycast(transform.position + transform.right, transform.right, tower.range, enemyLayerMask);
+        target = null;
+        RaycastHit2D ray = Physics2D.Raycast(transform.position+transform.right, transform.right, tower.range-1, enemyLayerMask);
         if (ray.collider){
             if (ray.collider.gameObject.tag == "Enemy"){
                 target = ray.collider.gameObject;

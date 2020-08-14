@@ -16,10 +16,11 @@ MonoBehaviour:
     type: 3}
   name: L. Nitrogen Turret
   sprite: {fileID: 21300000, guid: 763efd7224738834a8c01e0e12108e00, type: 3}
-  price: 300
+  price: 350
   level: 0
   maxHp: 40
   attackDmg: 0
-  attackRate: 1
-  range: 7
-  upgrade: []
+  attackRate: 1.4
+  range: 4
+  upgrade:
+  - {fileID: 11400000, guid: 1188948261ead2245aee4c4719057e2a, type: 2}
