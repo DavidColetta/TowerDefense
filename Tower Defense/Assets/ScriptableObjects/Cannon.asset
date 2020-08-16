@@ -15,8 +15,8 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: 9d4f9805a5ff2054598444d4f399e37e,
     type: 3}
   name: Cannon
-  sprite: {fileID: 21300000, guid: 28546d0e27b45974aa23f2bf09c02fa0, type: 3}
-  price: 1075
+  sprite: {fileID: 21300000, guid: 326ba30b174b355448e9eef3001b81b4, type: 3}
+  price: 1100
   level: 2
   maxHp: 60
   attackDmg: 10

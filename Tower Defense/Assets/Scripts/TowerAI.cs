@@ -92,7 +92,7 @@ public class TowerAI : MonoBehaviour
     public virtual void UpdateTarget(){
         target = FindClosestEnemy();
     }
-    GameObject FindClosestEnemy(){
+    protected GameObject FindClosestEnemy(){
         GameObject[] enemies;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closest = null;

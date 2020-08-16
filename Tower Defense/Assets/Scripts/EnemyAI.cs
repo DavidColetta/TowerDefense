@@ -16,6 +16,8 @@ public class EnemyAI : MonoBehaviour
     private List<Debuff> debuffsToRemove = new List<Debuff>();
     private List<Debuff> debuffsToAdd = new List<Debuff>();
     public float speedMultiplier = 1;
+    private Transform hpDisplay;
+    private int maxHp;
 
 
     void Awake()
@@ -23,8 +25,10 @@ public class EnemyAI : MonoBehaviour
         pathfinding = GetComponent<EnemyPathfinding>();
         pathfinding.enemy = enemy;
         rb = GetComponent<Rigidbody2D>();
+        hpDisplay = transform.Find("HpDisplay");
 
-        hp = Mathf.RoundToInt(enemy.maxHp * DifficultyManager.difficulty);
+        maxHp = Mathf.RoundToInt(enemy.maxHp * DifficultyManager.difficulty);
+        hp = maxHp;
         rb.mass = (enemy.maxHp + enemy.defense*2)/10;
         pathfinding.speed = speedMultiplier * enemy.speed;
     }
@@ -101,6 +105,8 @@ public class EnemyAI : MonoBehaviour
                 if (damage - enemy.defense > 0 || armorPiercing)
                     Instantiate(hurtParticles, transform.position, Quaternion.identity);
             }
+            float hpPercentage = 1 - (float)hp/(float)maxHp;
+            hpDisplay.localScale = new Vector3(hpPercentage, hpPercentage, 1f);
         }
     }
     public void AddDebuff(Debuff debuff){

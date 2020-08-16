@@ -12,14 +12,14 @@ public class NextWaveButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         nextWaveTextTMP = transform.Find("NextWaveText").gameObject.GetComponent<TextMeshProUGUI>();
+        button.interactable = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (EnemySpawner.waveInProgress){
             button.interactable = false;
-        } else if (!button.interactable){
+        } else if (!button.interactable && GameOver.NumberOfTowers > 0){
             button.interactable = true;
             nextWaveTextTMP.SetText("Wave " + (EnemySpawner.wave + 1));
         }

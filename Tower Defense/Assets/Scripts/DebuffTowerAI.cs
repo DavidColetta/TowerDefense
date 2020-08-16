@@ -42,6 +42,9 @@ public class DebuffTowerAI : TowerAI
                 }
             }
         }
+        if (!closest){
+            closest = FindClosestEnemy();
+        }
         return closest;
     }
 }

@@ -9,8 +9,18 @@ public class Settings : MonoBehaviour
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
+    public Slider dragSensitivitySlider;
+    public static int dragSensitivity = 15;
+    public CameraMovement cameraMovement;
     private void Start() {
         fullscreenToggle.isOn = Screen.fullScreen;
+
+        if (dragSensitivitySlider != null){
+            dragSensitivitySlider.value = dragSensitivity;
+        }
+        if (cameraMovement != null){
+            cameraMovement.panSpeed = dragSensitivity;
+        }
 
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -34,6 +44,12 @@ public class Settings : MonoBehaviour
     }
     public void SetFullscreen(bool isFullscreen){
         Screen.fullScreen = isFullscreen;
+    }
+    public void SetDragSensitivity(float sensitivity){
+        dragSensitivity = Mathf.RoundToInt(sensitivity);
+        if (cameraMovement != null){
+            cameraMovement.panSpeed = dragSensitivity;
+        }
     }
     public void QuitApplication(){
         Application.Quit();

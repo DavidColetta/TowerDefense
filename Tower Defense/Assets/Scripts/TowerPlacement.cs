@@ -11,6 +11,8 @@ public class TowerPlacement : MonoBehaviour
     private GameObject parent;
     public LayerMask CollisionMask;
     public Color CollisionColor;
+    [SerializeField]
+    private Vector2 placeableBox = new Vector2(14,9);
     private Vector2 Offset;
     private bool CanPlace;
     static GameObject instance;
@@ -54,7 +56,11 @@ public class TowerPlacement : MonoBehaviour
         if (bc.IsTouchingLayers(CollisionMask)){
             CanPlace = false;
         } else {
-            CanPlace = true;
+            if (transform.position.x <= placeableBox.x && transform.position.x > -placeableBox.x && transform.position.y < placeableBox.y && transform.position.y > -placeableBox.y){
+                CanPlace = true;
+            } else {
+                CanPlace = false;
+            }
         }
     }
     void Update()

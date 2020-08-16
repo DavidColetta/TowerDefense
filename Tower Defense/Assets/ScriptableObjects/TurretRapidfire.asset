@@ -15,11 +15,11 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: f1669df8bae7ba74794aec3b44910db4,
     type: 3}
   name: Rapidfire Turret
-  sprite: {fileID: 21300000, guid: 28546d0e27b45974aa23f2bf09c02fa0, type: 3}
-  price: 325
+  sprite: {fileID: 21300000, guid: 326ba30b174b355448e9eef3001b81b4, type: 3}
+  price: 400
   level: 1
   maxHp: 50
   attackDmg: 4
-  attackRate: 0.25
-  range: 7
+  attackRate: 0.3
+  range: 6
   upgrade: []
