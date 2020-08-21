@@ -5,10 +5,11 @@ using UnityEngine;
 public class DrillAI : TowerAI
 {
     public LayerMask enemyLayerMask;
+    public float spread = 5;
     public override void FixedUpdate() {
         if (projectile){
             if (target){
-
+                dir = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-spread,spread));
             } else {
                 UpdateTarget();
             }

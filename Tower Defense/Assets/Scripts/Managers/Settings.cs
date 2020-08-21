@@ -10,16 +10,20 @@ public class Settings : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
     public Slider dragSensitivitySlider;
+    public TMP_Dropdown difficultyDropdown;
     public static int dragSensitivity = 15;
     public CameraMovement cameraMovement;
     private void Start() {
         fullscreenToggle.isOn = Screen.fullScreen;
 
-        if (dragSensitivitySlider != null){
+        if (dragSensitivitySlider){
             dragSensitivitySlider.value = dragSensitivity;
         }
-        if (cameraMovement != null){
+        if (cameraMovement){
             cameraMovement.panSpeed = dragSensitivity;
+        }
+        if (difficultyDropdown){
+            difficultyDropdown.value = DifficultyManager.difficultyLevel-1;
         }
 
         resolutions = Screen.resolutions;
@@ -50,6 +54,9 @@ public class Settings : MonoBehaviour
         if (cameraMovement != null){
             cameraMovement.panSpeed = dragSensitivity;
         }
+    }
+    public void SetDifficultyLevel(int _difficultyLevel){
+        DifficultyManager.difficultyLevel = _difficultyLevel + 1;
     }
     public void QuitApplication(){
         Application.Quit();

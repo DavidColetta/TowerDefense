@@ -69,6 +69,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 3840
+  spread: 5
 --- !u!114 &-61306815818642078
 MonoBehaviour:
   m_ObjectHideFlags: 0

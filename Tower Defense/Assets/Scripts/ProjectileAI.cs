@@ -47,6 +47,7 @@ public class ProjectileAI : MonoBehaviour
             if (collidingObj.tag == "Enemy"){
                 EnemyAI enemyAI = collidingObj.GetComponent<EnemyAI>();
                 if (!ignore.Contains(collidingObj)){
+                    ignore.Add(collidingObj);
                     enemyAI.TakeDamage(attackDmg, armorPiercing);
                     foreach (Vector2 debuffID in debuffs)
                     {

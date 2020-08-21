@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, angle), 720*Time.deltaTime);
 
             if (!IsInvoking("Attack")){
-                InvokeRepeating("Attack", enemy.attackRate / speedMultiplier, enemy.attackRate);
+                InvokeRepeating("Attack", enemy.attackRate / speedMultiplier, enemy.attackRate / speedMultiplier);
             }
         } else {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, pathfinding.direction, 360*Time.deltaTime);

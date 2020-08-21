@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MenuButtonTween : MonoBehaviour
-{
+public class MenuButtonTween : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     RectTransform rectTransform;
     [SerializeField]
     float tweenDuration = 0.2f;
@@ -20,7 +20,7 @@ public class MenuButtonTween : MonoBehaviour
     int preferedSiblingIndex = -1;
     private Button button;
     private bool isButton = false;
-    private void Awake() {
+    protected virtual void Awake() {
         rectTransform = gameObject.GetComponent<RectTransform>();
         if (GetComponent<Button>() != null){
             button = GetComponent<Button>();
@@ -35,7 +35,7 @@ public class MenuButtonTween : MonoBehaviour
             LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true).setDelay(enableTweenDelay);
         }
     }
-    public void _MouseEnter() {
+    public virtual void OnPointerEnter(PointerEventData eventData) {
         if (isButton){
             if (button.interactable){
                 if (preferedSiblingIndex >= 0)
@@ -44,7 +44,7 @@ public class MenuButtonTween : MonoBehaviour
             }
         }
     }
-    public void _MouseExit() {
+    public virtual void OnPointerExit(PointerEventData eventData) {
         if ((Vector2)rectTransform.localScale != defaultScale){
             if (preferedSiblingIndex >= 0)
                 transform.SetSiblingIndex(preferedSiblingIndex);
@@ -58,7 +58,11 @@ public class MenuButtonTween : MonoBehaviour
         if (isButton){
             if (!LeanTween.isTweening(gameObject)){
                 if (!button.interactable){
-                    _MouseExit();
+                    if ((Vector2)rectTransform.localScale != defaultScale){
+                        if (preferedSiblingIndex >= 0)
+                            transform.SetSiblingIndex(preferedSiblingIndex);
+                        LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true);
+                    }
                 }
             }
         }

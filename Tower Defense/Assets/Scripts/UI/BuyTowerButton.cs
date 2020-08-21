@@ -4,21 +4,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class BuyTowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
+public class BuyTowerButton : MenuButtonTween{
     public Tower tower;
-    private MenuButtonTween menuButtonTween;
     private TextMeshProUGUI costText;
-    private void Awake() {
-        menuButtonTween = GetComponent<MenuButtonTween>();
+    protected override void Awake() {
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
         costText.SetText(tower.price.ToString());
+
+        base.Awake();
     }
-     public void OnPointerEnter (PointerEventData eventData) {
+     public override void OnPointerEnter (PointerEventData eventData) {
          Tooltip.CreateTowerTooltip_Static(tower);
-         menuButtonTween._MouseEnter();
+
+         base.OnPointerEnter(eventData);
      }
-     public void OnPointerExit (PointerEventData eventData) {
+     public override void OnPointerExit (PointerEventData eventData) {
          Tooltip.HideTooltip_Static();
-         menuButtonTween._MouseExit();
+
+         base.OnPointerExit(eventData);
      }
 }

@@ -23,4 +23,5 @@ MonoBehaviour:
   attackRate: 0.1
   range: 6
   upgrade:
+  - {fileID: 11400000, guid: bc56784f71cd04b4ab0acf36271b148d, type: 2}
   - {fileID: 11400000, guid: 3e7ad93c79fbbac42bc659780cd81e8c, type: 2}

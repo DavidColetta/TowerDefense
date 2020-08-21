@@ -15,10 +15,10 @@ MonoBehaviour:
   enemyObj: {fileID: 3750046421976770906, guid: e9287972e08cd3641a5046c39a6fb3a9,
     type: 3}
   name: Blue
-  maxHp: 40
+  maxHp: 50
   attackDmg: 8
   speed: 2.5
   attackRate: 0.5
   range: 0
-  defense: 1
+  defense: 0
   spawnCost: 42

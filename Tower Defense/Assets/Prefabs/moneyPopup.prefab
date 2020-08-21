@@ -56,8 +56,8 @@ MonoBehaviour:
   isBold: 0
   dissapearTimer: 1
   moveSpeed: {x: 0, y: 15}
-  textColor: {r: 1, g: 0.83094347, b: 0, a: 1}
-  boldColor: {r: 1, g: 0.73655117, b: 0, a: 1}
+  textColor: {r: 1, g: 0.9490196, b: 0, a: 1}
+  boldColor: {r: 1, g: 0.9490196, b: 0, a: 1}
 --- !u!222 &2862346412038285679
 CanvasRenderer:
   m_ObjectHideFlags: 0
