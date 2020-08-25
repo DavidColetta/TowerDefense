@@ -55,6 +55,7 @@ MonoBehaviour:
   hurtParticles: {fileID: 0}
   dir: {x: 0, y: 0, z: 0, w: 0}
   hp: 0
+  attackSound: Zap
 --- !u!212 &3547246251653248652
 SpriteRenderer:
   m_ObjectHideFlags: 0

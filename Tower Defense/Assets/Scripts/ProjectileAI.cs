@@ -12,8 +12,9 @@ public class ProjectileAI : MonoBehaviour
     public bool armorPiercing = false;
     public List<Vector2> debuffs = new List<Vector2>();
     public GameObject onDeath;
+    public string hitSound = "Hit";
     public Vector2 expansion = new Vector2(0f, 0f);
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     private Vector2 startPosition;
     [HideInInspector]
     public List<GameObject> ignore = new List<GameObject>();
@@ -41,14 +42,17 @@ public class ProjectileAI : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) {
+    protected virtual void OnTriggerEnter2D(Collider2D other) {
         GameObject collidingObj = other.gameObject;
         if (friendly){
             if (collidingObj.tag == "Enemy"){
                 EnemyAI enemyAI = collidingObj.GetComponent<EnemyAI>();
                 if (!ignore.Contains(collidingObj)){
                     ignore.Add(collidingObj);
-                    enemyAI.TakeDamage(attackDmg, armorPiercing);
+                    int _damage  = enemyAI.TakeDamage(attackDmg, armorPiercing);
+                    if (_damage > 0){
+                        AudioManager.Play_Static(hitSound);
+                    }
                     foreach (Vector2 debuffID in debuffs)
                     {
                         switch (debuffID.x)

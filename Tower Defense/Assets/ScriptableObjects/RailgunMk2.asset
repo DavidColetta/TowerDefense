@@ -22,4 +22,5 @@ MonoBehaviour:
   attackDmg: 20
   attackRate: 3
   range: 14
-  upgrade: []
+  upgrade:
+  - {fileID: 11400000, guid: aa5ee1172eda14d4aaf0e4b45dca209e, type: 2}

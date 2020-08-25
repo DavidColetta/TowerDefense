@@ -60,6 +60,8 @@ MonoBehaviour:
   target: {fileID: 0}
   hurtParticles: {fileID: 9004610638690518784, guid: aa0e5765c5d9f834f9aca79cdd7fdefe,
     type: 3}
+  debuffs:
+  - duration: 0
   speedMultiplier: 1
 --- !u!114 &3750046421976770885
 MonoBehaviour:

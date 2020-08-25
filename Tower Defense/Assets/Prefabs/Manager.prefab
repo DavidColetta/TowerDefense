@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2864178996063800762}
+  - component: {fileID: 173143353598884790}
   - component: {fileID: 2864178996063800757}
   - component: {fileID: 2864178996063800756}
   - component: {fileID: 2864178996063800763}
@@ -33,6 +34,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173143353598884790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864178996063800759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fca3deea69146c4784b796ff7f3268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Damage
+    clip: {fileID: 8300000, guid: 2981d78411bca9449aff013c95b3b551, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: e38addb07c2a11c4fafe4f3d27da7ba4, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Zap
+    clip: {fileID: 8300000, guid: 334949c5e4792b442be924f84c9df51a, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: 24300002, guid: 5757ed51151237d4bb290df12dfa1b0d, type: 2}
+    source: {fileID: 0}
+  - name: Heavy Shot
+    clip: {fileID: 8300000, guid: fa4972751b90c2747b8e96d21f11e32b, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: The Complex
+    clip: {fileID: 8300000, guid: 2db1be1b6e0bb0741998169ab7f23c1e, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    output: {fileID: 5263467875620047732, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Killing Time
+    clip: {fileID: 8300000, guid: 792c547ad86be7c42af6377099fb1a55, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    output: {fileID: 5263467875620047732, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
 --- !u!114 &2864178996063800757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,4 +136,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422a7ef77f6b95c4aa868ea133af0bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyLevel: 2

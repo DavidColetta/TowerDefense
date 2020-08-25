@@ -11,8 +11,14 @@ public class TowerPlacement : MonoBehaviour
     private GameObject parent;
     public LayerMask CollisionMask;
     public Color CollisionColor;
-    [SerializeField]
-    private Vector2 placeableBox = new Vector2(14,9);
+    private float minX;
+    private float minY;
+    private float maxX;
+    private float maxY;
+    [SerializeField] private float mapX = 29;
+    [SerializeField] private float mapY = 20;
+    [SerializeField] private float mapOffsetX = 0.5f;
+    [SerializeField] private float mapOffsetY = 0f;
     private Vector2 Offset;
     private bool CanPlace;
     static GameObject instance;
@@ -43,6 +49,14 @@ public class TowerPlacement : MonoBehaviour
             transform.Rotate(0f, 0f, 180f);
             range.gameObject.AddComponent<DrillRange>();
         }
+
+        float vertExtent = bc.size.x/2;    
+        float horzExtent = bc.size.y/2;
+
+        minX = horzExtent - mapX / 2f + mapOffsetX;
+        maxX = mapX / 2f - horzExtent + mapOffsetX;
+        minY = vertExtent - mapY / 2f + mapOffsetY;
+        maxY = mapY / 2f - vertExtent + mapOffsetY;
     }
     private void FixedUpdate() {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -56,7 +70,7 @@ public class TowerPlacement : MonoBehaviour
         if (bc.IsTouchingLayers(CollisionMask)){
             CanPlace = false;
         } else {
-            if (transform.position.x <= placeableBox.x && transform.position.x > -placeableBox.x && transform.position.y < placeableBox.y && transform.position.y > -placeableBox.y){
+            if (transform.position.x < maxX && transform.position.x > minX && transform.position.y < maxY && transform.position.y > minY){
                 CanPlace = true;
             } else {
                 CanPlace = false;

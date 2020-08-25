@@ -15,9 +15,10 @@ MonoBehaviour:
   enemyObj: {fileID: 3750046421976770906, guid: 3932f6e6401a7d84fa6fcba5db6635c5,
     type: 3}
   name: WallBreaker
-  maxHp: 6
+  maxHp: 8
   attackDmg: 0
   speed: 3
   attackRate: 0.8
   range: 0
+  defense: 0
   spawnCost: 5

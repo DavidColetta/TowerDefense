@@ -16,10 +16,11 @@ MonoBehaviour:
     type: 3}
   name: Rapidfire Turret
   sprite: {fileID: 21300000, guid: 326ba30b174b355448e9eef3001b81b4, type: 3}
-  price: 400
+  price: 500
   level: 1
   maxHp: 50
   attackDmg: 4
   attackRate: 0.3
   range: 6
-  upgrade: []
+  upgrade:
+  - {fileID: 11400000, guid: 108bf461476803a41b7d8fc9675e3af0, type: 2}

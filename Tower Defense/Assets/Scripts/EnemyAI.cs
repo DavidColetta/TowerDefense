@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour
     }
     
     #region Take Damage
-    public void TakeDamage(int damage, bool armorPiercing = false, bool showHurtParticles = true){
+    public int TakeDamage(int damage, bool armorPiercing = false, bool showHurtParticles = true){
         if (hp > 0){
             if (!armorPiercing)
                 hp -= Mathf.Max(damage - enemy.defense, 0);
@@ -107,7 +107,12 @@ public class EnemyAI : MonoBehaviour
             }
             float hpPercentage = 1 - (float)hp/(float)maxHp;
             hpDisplay.localScale = new Vector3(hpPercentage, hpPercentage, 1f);
+            if (!armorPiercing)
+                return Mathf.Max(damage - enemy.defense, 0);
+            else
+                return damage;
         }
+        return 0;
     }
     public void AddDebuff(Debuff debuff){
         if (!debuffsToAdd.Exists(x => x.GetType() == debuff.GetType())){

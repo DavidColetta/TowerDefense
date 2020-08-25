@@ -14,6 +14,7 @@ public class TowerAI : MonoBehaviour
     private SpriteRenderer SpriteR;
     protected GameObject target;
     public int hp;
+    [SerializeField] private string attackSound = "";
     void Awake()
     {
         bc = GetComponent<BoxCollider2D>();
@@ -25,10 +26,6 @@ public class TowerAI : MonoBehaviour
         //AstarPath.active.UpdateGraphs (bc.bounds);
 
         dir = transform.rotation;
-
-        if (projectile){
-            InvokeRepeating("UpdateTarget", 0f, 1f);
-        }
     }
     public virtual void FixedUpdate()
     {
@@ -38,8 +35,6 @@ public class TowerAI : MonoBehaviour
                 Vector2 lookPos = target.transform.position - transform.position;
                 float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
                 dir = Quaternion.Euler(0, 0, angle);
-            } else {
-                UpdateTarget();
             }
         }
     }
@@ -60,7 +55,7 @@ public class TowerAI : MonoBehaviour
         SpriteR.color = new Color(1f, 1f, 1f, 1f);
     }
     public void Die(){
-        if (tower.price >= 150*DifficultyManager.localDifficulty)
+        if (tower.price >= 120*DifficultyManager.localDifficulty)
             RestartWaveButton.GainRestartWave();
         Destroy(gameObject);
     }
@@ -70,19 +65,22 @@ public class TowerAI : MonoBehaviour
     }
     #endregion
     #region Attack
-    private void Update() {
-        if (target){
-            if (!IsInvoking("FireBullet")){
-                InvokeRepeating("FireBullet", tower.attackRate, tower.attackRate);
-            }
-        } else {
-            UpdateTarget();
-            if (IsInvoking("FireBullet") && !target){
-                CancelInvoke("FireBullet");
+    protected virtual void Update() {
+        if (projectile){
+            if (target){
+                if (!IsInvoking("FireBullet")){
+                    InvokeRepeating("FireBullet", tower.attackRate, tower.attackRate);
+                }
+            } else {
+                UpdateTarget();
+                if (IsInvoking("FireBullet") && !target){
+                    CancelInvoke("FireBullet");
+                }
             }
         }
     }
-    void FireBullet(){
+    protected virtual void FireBullet(){
+        AudioManager.Play_Static(attackSound, true);
         GameObject _projectile = Instantiate(projectile, transform.position, dir, transform);
         ProjectileAI _projectileAI = _projectile.GetComponent<ProjectileAI>();
         _projectileAI.attackDmg = tower.attackDmg;

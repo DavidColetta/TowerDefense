@@ -3,27 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class Settings : MonoBehaviour
 {
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
-    public Slider dragSensitivitySlider;
+    public Slider panSensitivitySlider;
+    public AudioMixer mixer;
+    public Slider MasterVolumeSlider;
+    public Slider MusicVolumeSlider;
+    public Slider SFXVolumeSlider;
     public TMP_Dropdown difficultyDropdown;
-    public static int dragSensitivity = 15;
     public CameraMovement cameraMovement;
     private void Start() {
         fullscreenToggle.isOn = Screen.fullScreen;
 
-        if (dragSensitivitySlider){
-            dragSensitivitySlider.value = dragSensitivity;
+        if (panSensitivitySlider){
+            panSensitivitySlider.value = PlayerPrefs.GetInt("panSensitivity", 15);
         }
         if (cameraMovement){
-            cameraMovement.panSpeed = dragSensitivity;
+            cameraMovement.panSpeed = PlayerPrefs.GetInt("panSensitivity", 15);
         }
         if (difficultyDropdown){
-            difficultyDropdown.value = DifficultyManager.difficultyLevel-1;
+            difficultyDropdown.value = PlayerPrefs.GetInt("difficultyLevel", 1);
+        }
+
+        if (MasterVolumeSlider){
+            MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+        }
+        if (MusicVolumeSlider){
+            MusicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+        }
+        if (SFXVolumeSlider){
+            SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
         }
 
         resolutions = Screen.resolutions;
@@ -49,14 +63,28 @@ public class Settings : MonoBehaviour
     public void SetFullscreen(bool isFullscreen){
         Screen.fullScreen = isFullscreen;
     }
-    public void SetDragSensitivity(float sensitivity){
-        dragSensitivity = Mathf.RoundToInt(sensitivity);
+    public void SetPanSensitivity(float sensitivity){
+        PlayerPrefs.SetInt("panSensitivity", Mathf.RoundToInt(sensitivity));
         if (cameraMovement != null){
-            cameraMovement.panSpeed = dragSensitivity;
+            cameraMovement.panSpeed = Mathf.RoundToInt(sensitivity);
         }
     }
+    public void SetMasterVolume(float volume){
+        SetVolume(volume, "MasterVolume");
+    }
+    public void SetMusicVolume(float volume){
+        SetVolume(volume, "MusicVolume");
+    }
+    public void SetSFXVolume(float volume){
+        SetVolume(volume, "SFXVolume");
+    }
+    public void SetVolume(float volume, string name = "MasterVolume"){
+        PlayerPrefs.SetFloat(name,volume);
+        mixer.SetFloat(name, Mathf.Log10(volume)*20);
+    }
     public void SetDifficultyLevel(int _difficultyLevel){
-        DifficultyManager.difficultyLevel = _difficultyLevel + 1;
+        PlayerPrefs.SetInt("difficultyLevel", _difficultyLevel);
+        DifficultyManager.difficultyLevel = _difficultyLevel;
     }
     public void QuitApplication(){
         Application.Quit();

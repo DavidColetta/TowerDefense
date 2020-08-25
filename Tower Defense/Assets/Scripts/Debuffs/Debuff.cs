@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Debuff
 {
     protected EnemyAI target;
-    protected float duration;
+    public float duration;
     public Debuff(EnemyAI target, float duration){
         this.target = target;
     }

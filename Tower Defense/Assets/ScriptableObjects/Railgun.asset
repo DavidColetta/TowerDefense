@@ -24,3 +24,4 @@ MonoBehaviour:
   range: 12
   upgrade:
   - {fileID: 11400000, guid: 2f0ab29404f18204881bab40e9a12deb, type: 2}
+  - {fileID: 11400000, guid: fd0ca50df476003419813a1c4f7fcb86, type: 2}

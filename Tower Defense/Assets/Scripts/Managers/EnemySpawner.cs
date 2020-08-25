@@ -33,8 +33,8 @@ public class EnemySpawner : MonoBehaviour
             cannotSpawn.Clear();
             
             float trueAmbushChance = 0;
-            if (wave > 4)
-                trueAmbushChance = (DifficultyManager.difficultyLevel-1)*ambushChance;
+            if (wave > 5)
+                trueAmbushChance = (DifficultyManager.difficultyLevel)*ambushChance;
             
             if (trueAmbushChance > Random.value){
                 spawnPos = new Vector2(spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));

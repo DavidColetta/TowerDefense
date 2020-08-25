@@ -182,6 +182,7 @@ MonoBehaviour:
   hurtParticles: {fileID: 0}
   dir: {x: 0, y: 0, z: 0, w: 0}
   hp: 0
+  attackSound: Heavy Shot
 --- !u!212 &8128271996967439703
 SpriteRenderer:
   m_ObjectHideFlags: 0

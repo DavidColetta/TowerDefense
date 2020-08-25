@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1661241941
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8039e1f1ccf123d4bb38e974b1f7ef13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,6 +105,7 @@ MonoBehaviour:
   armorPiercing: 0
   debuffs: []
   onDeath: {fileID: 0}
+  hitSound: 
   expansion: {x: 10, y: 10}
   ignore: []
 --- !u!58 &7554151668543454559
