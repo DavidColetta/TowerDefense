@@ -34,6 +34,7 @@ public class RepairButton : MonoBehaviour
     public void RepairTower(){
         if (Selector.selectedObject){
             if (repairCost <= MoneyManager.money){
+                AudioManager.Play_Static("Build");
                 towerAI.hp = towerAI.tower.maxHp;
                 MoneyManager.GainMoney(-repairCost);
             }

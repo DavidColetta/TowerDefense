@@ -112,7 +112,7 @@ public class EnemyAI : MonoBehaviour
             else
                 return damage;
         }
-        return 0;
+        return 1;
     }
     public void AddDebuff(Debuff debuff){
         if (!debuffsToAdd.Exists(x => x.GetType() == debuff.GetType())){

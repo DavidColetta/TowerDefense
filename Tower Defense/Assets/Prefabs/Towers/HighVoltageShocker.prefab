@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a357b0316de1c74da6f0e04ff56f4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.32156864, g: 2, b: 2, a: 0}
+  glowColor: {r: 0, g: 2.117171, b: 2.6701574, a: 0}
 --- !u!1001 &4655194910259275193
 PrefabInstance:
   m_ObjectHideFlags: 0

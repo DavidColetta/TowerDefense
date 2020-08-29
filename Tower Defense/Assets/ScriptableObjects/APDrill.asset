@@ -15,8 +15,9 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: 7ac1aeb5505bd3944823ad74a0b682f7,
     type: 3}
   name: ArmorPiercing Drill
+  description: The bullets ignore enemy armor
   sprite: {fileID: 21300000, guid: 40d66ec7f16721a4da7e2c648b51e4f7, type: 3}
-  price: 750
+  price: 700
   level: 1
   maxHp: 60
   attackDmg: 1

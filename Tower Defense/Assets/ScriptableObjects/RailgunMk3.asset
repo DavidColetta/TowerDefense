@@ -15,11 +15,12 @@ MonoBehaviour:
   towerObj: {fileID: 7010071345839317058, guid: c5a7ee2df23f1b84d90ce063eb241bac,
     type: 3}
   name: Railgun Mk 3
+  description: Massive attack damage, can pierce infinitly
   sprite: {fileID: 21300000, guid: 6b3a823ae8712544ba638cd6c08b7c98, type: 3}
-  price: 2800
+  price: 2400
   level: 2
   maxHp: 75
   attackDmg: 60
-  attackRate: 3
-  range: 14
+  attackRate: 4.5
+  range: 16
   upgrade: []

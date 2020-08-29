@@ -15,8 +15,9 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: 98303fe0d118ac0479cdb1be9a4ad2a1,
     type: 3}
   name: Heavy Duty Drill
+  description: Fire slower, larger bullets
   sprite: {fileID: 21300000, guid: 40d66ec7f16721a4da7e2c648b51e4f7, type: 3}
-  price: 950
+  price: 900
   level: 1
   maxHp: 60
   attackDmg: 10

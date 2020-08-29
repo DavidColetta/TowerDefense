@@ -23,7 +23,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float mapOffsetX = 0.5f;
     [SerializeField] private float mapOffsetY = 0.5f;
     private void FixedUpdate() {
-        if (Input.GetMouseButton(2)) {
+        if (Input.GetMouseButton(2) || Input.GetMouseButton(1)) {
             transform.position -= new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * panSpeed * Time.deltaTime * thisCamera.orthographicSize;
         } else {
             transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed * thisCamera.orthographicSize;

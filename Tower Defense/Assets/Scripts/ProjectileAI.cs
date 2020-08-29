@@ -15,7 +15,7 @@ public class ProjectileAI : MonoBehaviour
     public string hitSound = "Hit";
     public Vector2 expansion = new Vector2(0f, 0f);
     protected Rigidbody2D rb;
-    private Vector2 startPosition;
+    protected Vector2 startPosition;
     [HideInInspector]
     public List<GameObject> ignore = new List<GameObject>();
     void Start()
@@ -50,8 +50,10 @@ public class ProjectileAI : MonoBehaviour
                 if (!ignore.Contains(collidingObj)){
                     ignore.Add(collidingObj);
                     int _damage  = enemyAI.TakeDamage(attackDmg, armorPiercing);
-                    if (_damage > 0){
-                        AudioManager.Play_Static(hitSound);
+                    if (_damage > 0 || attackDmg == 0){
+                        AudioManager.Play_Static(hitSound, true);
+                    } else if (_damage <= 0 && attackDmg != 0){
+                        AudioManager.Play_Static("MetalHit", true);
                     }
                     foreach (Vector2 debuffID in debuffs)
                     {
@@ -80,7 +82,7 @@ public class ProjectileAI : MonoBehaviour
             }
         }
     }
-    public void OnHit(){
+    public virtual void OnHit(){
         piercing -= 1;
         if (piercing == 0){
             Die();

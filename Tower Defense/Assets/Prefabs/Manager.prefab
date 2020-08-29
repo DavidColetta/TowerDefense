@@ -49,7 +49,7 @@ MonoBehaviour:
   sounds:
   - name: Damage
     clip: {fileID: 8300000, guid: 2981d78411bca9449aff013c95b3b551, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     pitchVariance: 0.2
     loop: 0
@@ -57,17 +57,17 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: Hit
-    clip: {fileID: 8300000, guid: e38addb07c2a11c4fafe4f3d27da7ba4, type: 3}
-    volume: 0.5
-    pitch: 1
+    clip: {fileID: 8300000, guid: f00fcff482b17bc4ca22f49031b53d45, type: 3}
+    volume: 0.6
+    pitch: 0.9
     pitchVariance: 0.2
     loop: 0
     output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
       type: 2}
     source: {fileID: 0}
   - name: Zap
-    clip: {fileID: 8300000, guid: 334949c5e4792b442be924f84c9df51a, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: c1a0a9f0a74b43549905b283e00156d6, type: 3}
+    volume: 0.6
     pitch: 1
     pitchVariance: 0.2
     loop: 0
@@ -75,31 +75,86 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Heavy Shot
     clip: {fileID: 8300000, guid: fa4972751b90c2747b8e96d21f11e32b, type: 3}
-    volume: 0.5
+    volume: 0.6
     pitch: 1
     pitchVariance: 0.2
     loop: 0
     output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
       type: 2}
     source: {fileID: 0}
-  - name: The Complex
+  - name: Music The Complex
     clip: {fileID: 8300000, guid: 2db1be1b6e0bb0741998169ab7f23c1e, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 1
     pitchVariance: 0
     loop: 1
     output: {fileID: 5263467875620047732, guid: 5757ed51151237d4bb290df12dfa1b0d,
       type: 2}
     source: {fileID: 0}
-  - name: Killing Time
+  - name: Music Killing Time
     clip: {fileID: 8300000, guid: 792c547ad86be7c42af6377099fb1a55, type: 3}
-    volume: 0.5
+    volume: 0.2
     pitch: 1
     pitchVariance: 0
     loop: 1
     output: {fileID: 5263467875620047732, guid: 5757ed51151237d4bb290df12dfa1b0d,
       type: 2}
     source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 3b2e332af8c323e42b3a4587dc67562c, type: 3}
+    volume: 1
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Break
+    clip: {fileID: 8300000, guid: bea07f5127214214db22388d3fe1437a, type: 3}
+    volume: 1
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Build
+    clip: {fileID: 8300000, guid: 05bd0865d1b7c8941934163850c2888d, type: 3}
+    volume: 1
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: MetalHit
+    clip: {fileID: 8300000, guid: f34579469a9c3114295a7dcc01947fa3, type: 3}
+    volume: 0.9
+    pitch: 0.8
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Freeze
+    clip: {fileID: 8300000, guid: 9742c6ab5354ed446b6d3a53545e70d9, type: 3}
+    volume: 0.8
+    pitch: 1.2
+    pitchVariance: 0.2
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Trumpets
+    clip: {fileID: 8300000, guid: 9d1a449a2dcc56d49af9e5dfe847fcdd, type: 3}
+    volume: 1
+    pitch: 1
+    pitchVariance: 0.02
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 5757ed51151237d4bb290df12dfa1b0d, type: 2}
 --- !u!114 &2864178996063800757
 MonoBehaviour:
   m_ObjectHideFlags: 0

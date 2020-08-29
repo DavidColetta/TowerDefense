@@ -37,4 +37,9 @@ public class TrackingProjectileAI : ProjectileAI
 
         target = null;
     }
+    public override void OnHit(){
+        base.OnHit();
+
+        startPosition = rb.position;
+    }
 }

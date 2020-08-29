@@ -28,7 +28,7 @@ public class DebuffTowerAI : TowerAI
         GameObject[] enemies;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closest = null;
-        float distance = tower.range;
+        float distance = tower.range * rangeMultiplier;
         Vector3 position = transform.position;
         foreach (GameObject potentialTarget in enemies){
             float _distance = Vector2.Distance(potentialTarget.transform.position, position);

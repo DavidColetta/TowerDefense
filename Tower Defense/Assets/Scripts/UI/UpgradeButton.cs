@@ -49,14 +49,15 @@ public class UpgradeButton : MonoBehaviour
     }
 
     public void CreateTooltip(){
-        Tooltip.CreateTowerTooltip_Static(upgradedTower);
+        TowerAI _TowerAI = Selector.selectedObject.GetComponent<TowerAI>();
+        Tooltip.CreateTowerTooltip_Static(upgradedTower, _TowerAI.attackDmgMultiplier, _TowerAI.attackRateMultiplier);
         Transform _range = Selector.selectedObject.transform.Find("Range");
-        _range.localScale = Vector2.one*upgradedTower.range*2;
+        _range.localScale = Vector2.one*upgradedTower.range*2*_TowerAI.rangeMultiplier;
     }
     public void ResetRange(){
         if (Selector.selectedObject){
             Transform _range = Selector.selectedObject.transform.Find("Range");
-            _range.localScale = Vector2.one*tower.range*2;
+            _range.localScale = Vector2.one*tower.range*2*Selector.selectedObject.GetComponent<TowerAI>().rangeMultiplier;
         } 
     }
     private void ActuallyDisable(){

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using TMPro;
 
 public class PauseManager : MonoBehaviour
@@ -13,12 +14,15 @@ public class PauseManager : MonoBehaviour
     [SerializeField] 
     private GameObject gameOverPanel = null;
     private static PauseManager instance;
+    [SerializeField] private AudioMixerSnapshot Default = null;
+    [SerializeField] private AudioMixerSnapshot DampenedMusic = null;
     public static void Pause_Static(){
         instance.Pause();
     }
     public void Pause(){
         paused = true;
         Time.timeScale = 0;
+        DampenedMusic.TransitionTo(0);
         pausePanel.SetActive(true);
         pausePanel.transform.SetAsLastSibling();
         if (GameOver.isGameOver){
@@ -32,9 +36,11 @@ public class PauseManager : MonoBehaviour
             settingsPanel.SetActive(true);
         }
     }
-    public void Unpause(){
+    public void Unpause(bool dontUndampenAudio = false){
         paused = false;
         Time.timeScale = 1;
+        if (!dontUndampenAudio)
+            Default.TransitionTo(0.2f);
         pausePanel.SetActive(false);
     }
     public void TogglePause(){

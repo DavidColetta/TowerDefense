@@ -31,6 +31,8 @@ public class EnemySpawner : MonoBehaviour
             spawnCurrency = wave * waveMultiplier;
             spawnSpeed ++;
             cannotSpawn.Clear();
+
+            AudioManager.Play_Static("Trumpets");
             
             float trueAmbushChance = 0;
             if (wave > 5)
@@ -38,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
             
             if (trueAmbushChance > Random.value){
                 spawnPos = new Vector2(spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
-                DifficultyManager.UpdateDifficulty(0.5f);
+                DifficultyManager.UpdateDifficulty(0.8f);
             }else{
                 spawnPos = new Vector2(-spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
                 DifficultyManager.UpdateDifficulty();
@@ -56,6 +58,8 @@ public class EnemySpawner : MonoBehaviour
             RestartWaveButton.CanRestart = false;
             DifficultyManager.UpdateDifficulty(0.8f);
 
+            AudioManager.Play_Static("Trumpets");
+
             StartCoroutine("SpawnWave");
         }
     }
@@ -67,7 +71,9 @@ public class EnemySpawner : MonoBehaviour
                 SpawnEnemy(_enemyToSpawn);
                 yield return new WaitForSeconds(_enemyToSpawn.spawnCost / spawnSpeed);
             }
-            //spawnPos += new Vector2(1,0);
+            if (0.25 > Random.value){
+                spawnPos = new Vector2(-spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
+            }
         }
         waveInProgress = false;
 

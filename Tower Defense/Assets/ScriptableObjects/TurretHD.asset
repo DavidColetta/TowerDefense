@@ -15,6 +15,7 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: e9c524a95a274e946a0fa5c2612ff8f7,
     type: 3}
   name: Heavy Duty Turret
+  description: Deals more damage
   sprite: {fileID: 21300000, guid: 326ba30b174b355448e9eef3001b81b4, type: 3}
   price: 500
   level: 1

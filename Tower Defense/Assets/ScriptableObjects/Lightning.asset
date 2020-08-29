@@ -15,12 +15,14 @@ MonoBehaviour:
   towerObj: {fileID: 7010071345839317058, guid: bc25ebf38c704094e8bc64df5d40a2b4,
     type: 3}
   name: Lightning Tower
+  description: Fires a lightning bolt, which bounces from enemy to enemy up to 5
+    times
   sprite: {fileID: 21300000, guid: 00f5491de409d814092885b3cd7525c5, type: 3}
-  price: 1600
+  price: 1400
   level: 1
   maxHp: 65
-  attackDmg: 12
-  attackRate: 4.5
+  attackDmg: 15
+  attackRate: 3.2
   range: 10
   upgrade:
   - {fileID: 11400000, guid: c8dc4b65fa6e66d409001d23e2094f7b, type: 2}

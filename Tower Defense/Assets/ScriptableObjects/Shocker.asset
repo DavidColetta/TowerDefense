@@ -15,6 +15,7 @@ MonoBehaviour:
   towerObj: {fileID: 7103864420323988417, guid: fa1a42d11df5e3841b1e4029918b0a50,
     type: 3}
   name: Shocker
+  description: AOE attack that hits any enemies within range
   sprite: {fileID: 21300000, guid: f0eb3ebf96df696439c52308830e715b, type: 3}
   price: 300
   level: 0

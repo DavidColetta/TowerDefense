@@ -3,7 +3,14 @@ guid: d32448aa2b34bdc4f8d1655eadba36f1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pausePanel: {instanceID: 0}
+  - settingsPanel: {instanceID: 0}
+  - gameOverPanel: {instanceID: 0}
+  - Default: {fileID: 9217143728417846019, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+  - DampenedMusic: {fileID: 9217143728417846019, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

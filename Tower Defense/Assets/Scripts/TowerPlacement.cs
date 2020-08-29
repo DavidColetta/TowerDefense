@@ -8,7 +8,9 @@ public class TowerPlacement : MonoBehaviour
     public Tower tower;
     private BoxCollider2D bc;
     private SpriteRenderer SpriteR;
+    private LineRenderer lineR;
     private GameObject parent;
+    public float range = 4;
     public LayerMask CollisionMask;
     public Color CollisionColor;
     private float minX;
@@ -31,6 +33,7 @@ public class TowerPlacement : MonoBehaviour
 
         bc = GetComponent<BoxCollider2D>();
         SpriteR = GetComponent<SpriteRenderer>();
+        lineR = GetComponent<LineRenderer>();
 
         SpriteR.sprite = tower.sprite;
         bc.size = tower.towerObj.GetComponent<BoxCollider2D>().size;
@@ -61,20 +64,31 @@ public class TowerPlacement : MonoBehaviour
     private void FixedUpdate() {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector2(Mathf.Round(mouseWorldPosition.x), Mathf.Round(mouseWorldPosition.y));
-        if (transform.rotation.eulerAngles.z%180 == 0){
+        if (Mathf.RoundToInt(transform.rotation.eulerAngles.z)%180 == 0){
             transform.position += (Vector3)Offset;
         } else {
             transform.position += new Vector3(Offset.y, Offset.x, 0);
         }
 
-        if (bc.IsTouchingLayers(CollisionMask)){
-            CanPlace = false;
-        } else {
-            if (transform.position.x < maxX && transform.position.x > minX && transform.position.y < maxY && transform.position.y > minY){
-                CanPlace = true;
-            } else {
+        float distance = DistanceToClosestTower();
+
+        if (distance <= range){
+            Color normal = new Color(1f, 1f, 1f, CollisionColor.a);
+            lineR.startColor = normal;
+            lineR.endColor = normal;
+            if (bc.IsTouchingLayers(CollisionMask)){
                 CanPlace = false;
+            } else {
+                if (transform.position.x < maxX && transform.position.x > minX && transform.position.y < maxY && transform.position.y > minY){
+                    CanPlace = true;
+                } else {
+                    CanPlace = false;
+                }
             }
+        } else {
+            CanPlace = false;
+            lineR.startColor = CollisionColor;
+            lineR.endColor = CollisionColor;
         }
     }
     void Update()
@@ -105,6 +119,29 @@ public class TowerPlacement : MonoBehaviour
             } else {
                 SpriteR.color = CollisionColor;
             }
+        }
+    }
+    float DistanceToClosestTower(){
+        GameObject[] towers;
+        towers = GameObject.FindGameObjectsWithTag("Tower");
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        GameObject closest = null;
+        foreach (GameObject potentialTarget in towers)
+        {
+            Vector2 diff = potentialTarget.transform.position - position;
+            float _distance = diff.magnitude;
+            if (_distance < distance){
+                closest = potentialTarget;
+                distance = _distance;
+            }
+        }
+        if (closest){
+            lineR.SetPosition(0,position);
+            lineR.SetPosition(1,closest.transform.position);
+            return distance;
+        } else {
+            return Mathf.Infinity;
         }
     }
 }

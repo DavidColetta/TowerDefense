@@ -55,13 +55,13 @@ public class Tooltip : MonoBehaviour
     public static void HideTooltip_Static(){
         instance.HideTooltip();
     }
-    public void CreateTowerTooltip(Tower tower){
+    public void CreateTowerTooltip(Tower tower, float attackMult = 1, float speedMult = 1){
         if (tower != null){
-            string tooltipString = tower.name+"\nDamage: "+tower.attackDmg.ToString()+"\nAttack Rate: "+tower.attackRate.ToString()+"\nHp: "+tower.maxHp.ToString();
+            string tooltipString = tower.name+"\n"+tower.description+"\nDamage: "+Mathf.RoundToInt(tower.attackDmg*attackMult).ToString()+"\nAttack Rate: "+(Mathf.Round(tower.attackRate/speedMult*100)/100).ToString()+"\nHp: "+tower.maxHp.ToString();
             ShowTooltip(tooltipString);
         }
     }
-    public static void CreateTowerTooltip_Static(Tower tower){
-        instance.CreateTowerTooltip(tower);
+    public static void CreateTowerTooltip_Static(Tower tower, float attackMult = 1, float speedMult = 1){
+        instance.CreateTowerTooltip(tower, attackMult, speedMult);
     }
 }

@@ -25,6 +25,7 @@ public class MenuButtonTween : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (GetComponent<Button>() != null){
             button = GetComponent<Button>();
             isButton = true;
+            button.onClick.AddListener(() => _MouseClick());
         } else {
             isButton = false;
         }
@@ -52,7 +53,7 @@ public class MenuButtonTween : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
     public void _MouseClick(){
-        LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true).setEase(LeanTweenType.punch);
+        AudioManager.Play_Static("Click");
     }
     private void Update() {
         if (isButton){

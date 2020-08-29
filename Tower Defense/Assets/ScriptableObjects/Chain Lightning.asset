@@ -15,11 +15,12 @@ MonoBehaviour:
   towerObj: {fileID: 7010071345839317058, guid: 826155bd92718124ab8dfb98fed84786,
     type: 3}
   name: Chain Lightning
+  description: Lightning chains to 15 enemies
   sprite: {fileID: 21300000, guid: 00f5491de409d814092885b3cd7525c5, type: 3}
-  price: 3000
+  price: 2500
   level: 2
   maxHp: 75
-  attackDmg: 20
-  attackRate: 4.5
-  range: 10
+  attackDmg: 35
+  attackRate: 3.2
+  range: 12
   upgrade: []

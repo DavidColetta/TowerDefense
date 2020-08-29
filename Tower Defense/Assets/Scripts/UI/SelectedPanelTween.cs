@@ -15,6 +15,7 @@ public class SelectedPanelTween : MonoBehaviour
     private void Awake() {
         rectTransform = gameObject.GetComponent<RectTransform>();
         defaultScale = rectTransform.localScale;
+        Enabled = enabled;
     }
     public void Enable() {
         if (!Enabled){
@@ -34,5 +35,12 @@ public class SelectedPanelTween : MonoBehaviour
     private void ActuallyDisable(){
         LeanTween.cancel(currentTweenID);
         gameObject.SetActive(false);
+    }
+    public void ToggleEnabled(){
+        if (Enabled){
+            Disable();
+        } else {
+            Enable();
+        }
     }
 }

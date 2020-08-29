@@ -105,7 +105,7 @@ MonoBehaviour:
   armorPiercing: 0
   debuffs: []
   onDeath: {fileID: 0}
-  hitSound: 
+  hitSound: Hit
   expansion: {x: 10, y: 10}
   ignore: []
 --- !u!58 &7554151668543454559

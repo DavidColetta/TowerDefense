@@ -15,6 +15,7 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: 804dd8dd3e4d99f4d82d1ed543e98abf,
     type: 3}
   name: Turret
+  description: A basic turret
   sprite: {fileID: 21300000, guid: 326ba30b174b355448e9eef3001b81b4, type: 3}
   price: 150
   level: 0

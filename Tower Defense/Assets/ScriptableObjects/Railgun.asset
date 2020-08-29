@@ -15,6 +15,7 @@ MonoBehaviour:
   towerObj: {fileID: 7010071345839317058, guid: 692b13e3973165e4da18f20b61a158f9,
     type: 3}
   name: Railgun
+  description: Fires a high damage bullet, can pierce up to 5 enemies
   sprite: {fileID: 21300000, guid: 6b3a823ae8712544ba638cd6c08b7c98, type: 3}
   price: 600
   level: 0

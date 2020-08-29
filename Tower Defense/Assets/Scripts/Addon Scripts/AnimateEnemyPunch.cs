@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(EnemyAI))]
+[RequireComponent(typeof(Animator))]
 public class AnimateEnemyPunch : MonoBehaviour
 {
     private Animator animator;

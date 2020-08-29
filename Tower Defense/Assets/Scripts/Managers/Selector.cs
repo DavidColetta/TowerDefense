@@ -32,9 +32,9 @@ public class Selector : MonoBehaviour
                 
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 0f, clickableLayers);
                 if (hit.collider != null) {
-                    selectedObject = hit.collider.gameObject;
-                    if (selectedObject.tag == "Tower" || selectedObject.tag == "Wall"){
-                        Selector.SelectTower(selectedObject);
+                    GameObject hitObject = hit.collider.gameObject;
+                    if (hitObject.tag == "Tower" || hitObject.tag == "Wall"){
+                        Selector.SelectTower(hitObject);
                     }
                 } else {
                     selectedObject = null;
@@ -55,6 +55,7 @@ public class Selector : MonoBehaviour
     public static void SelectTower(GameObject _selected){
         if (selectedObject != _selected){
             selectedObject = _selected;
+            AudioManager.Play_Static("Click");
         }
         instance.selectedDisplayPanel.GetComponent<SelectedPanelTween>().Enable();
         instance.towerAI = _selected.GetComponent<TowerAI>();
@@ -64,7 +65,7 @@ public class Selector : MonoBehaviour
         instance.rangeDisplay = _selected.transform.Find("Range").gameObject;
         instance.rangeDisplay.SetActive(true);
         if (instance.towerAI.tower.range > 0)
-            instance.rangeDisplay.transform.localScale = Vector2.one*instance.towerAI.tower.range*2;
+            instance.rangeDisplay.transform.localScale = Vector2.one*instance.towerAI.tower.range*2*instance.towerAI.rangeMultiplier;
         if (instance.towerAI.tower.upgrade.Length > 0){
             instance.upgrade1Button.SetActive(true);
         }
@@ -74,7 +75,7 @@ public class Selector : MonoBehaviour
     }
     public void ToolipSelectedTower(){
         if (towerAI != null){
-            Tooltip.CreateTowerTooltip_Static(towerAI.tower);
+            Tooltip.CreateTowerTooltip_Static(towerAI.tower, towerAI.attackDmgMultiplier, towerAI.attackRateMultiplier);
         }
     }
 }

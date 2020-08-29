@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.Audio;
 using System;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-    static AudioManager instance;
+    public AudioMixer mixer;
+    public static AudioManager instance;
     public static Sound music;
     void Awake()
     {
@@ -43,10 +45,11 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
     public static void Play_Static(string name, bool CanOverlap = false){
-        instance.Play(name, CanOverlap);
+        if (instance)
+            instance.Play(name, CanOverlap);
     }
     public void StopPlaying(string name){
-        if (name == "")
+        if (name == null)
             return;
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null){
@@ -61,6 +64,8 @@ public class AudioManager : MonoBehaviour
     public static void ChangeMusicPlaying(string name){
         if (music != null)
             StopPlaying_Static(music.name);
+        if (name == null)
+            return;
         Sound s = Array.Find(instance.sounds, sound => sound.name == name);
         if (s == null){
             Debug.LogWarning("Music "+name+" not found!");

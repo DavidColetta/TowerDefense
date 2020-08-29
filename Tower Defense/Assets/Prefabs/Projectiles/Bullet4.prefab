@@ -57,6 +57,7 @@ MonoBehaviour:
   debuffs:
   - {x: 1, y: 5}
   onDeath: {fileID: 0}
+  hitSound: Freeze
   expansion: {x: 0, y: 0}
   ignore: []
 --- !u!212 &4732160250739291105

@@ -15,8 +15,9 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: 4b950719da3c6094aa2691a2d567db9c,
     type: 3}
   name: L. Nitrogen Turret
+  description: Slows enemies
   sprite: {fileID: 21300000, guid: 763efd7224738834a8c01e0e12108e00, type: 3}
-  price: 350
+  price: 400
   level: 0
   maxHp: 40
   attackDmg: 0

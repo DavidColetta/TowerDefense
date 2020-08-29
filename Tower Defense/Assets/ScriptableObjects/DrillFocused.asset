@@ -15,8 +15,9 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: e59992977d07d4346b6d213aaf33df94,
     type: 3}
   name: Focused Drill
+  description: Bullets can pierce up to 2 enemies
   sprite: {fileID: 21300000, guid: 40d66ec7f16721a4da7e2c648b51e4f7, type: 3}
-  price: 1550
+  price: 1450
   level: 2
   maxHp: 70
   attackDmg: 1

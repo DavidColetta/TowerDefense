@@ -15,6 +15,7 @@ MonoBehaviour:
   towerObj: {fileID: 7652072229400530959, guid: f1669df8bae7ba74794aec3b44910db4,
     type: 3}
   name: Rapidfire Turret
+  description: Shoots faster
   sprite: {fileID: 21300000, guid: 326ba30b174b355448e9eef3001b81b4, type: 3}
   price: 500
   level: 1

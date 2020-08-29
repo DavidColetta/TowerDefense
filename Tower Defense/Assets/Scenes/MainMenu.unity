@@ -1249,10 +1249,10 @@ RectTransform:
   m_Father: {fileID: 1261118011}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -50}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190344170
 MonoBehaviour:
@@ -1869,7 +1869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &517593792
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3129,7 +3129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &941469315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5872,7 +5872,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f12758907f15124792962e2c90be7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: Killing Time
+  music: Music Killing Time
+  Default: {fileID: 24500006, guid: 5757ed51151237d4bb290df12dfa1b0d, type: 2}
+  NoMusic: {fileID: -8823885991688392351, guid: 5757ed51151237d4bb290df12dfa1b0d,
+    type: 2}
 --- !u!114 &1544251652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7406,7 +7409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 132823246}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1858837417
@@ -8377,10 +8380,10 @@ RectTransform:
   m_Father: {fileID: 1261118011}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -50}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071801940
 MonoBehaviour:

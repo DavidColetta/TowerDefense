@@ -15,8 +15,9 @@ MonoBehaviour:
   towerObj: {fileID: 6106913484803744738, guid: 4f8543378e6516246abfb17c4e83f4f5,
     type: 3}
   name: Heavy Duty Wall
+  description: Enemies prioritize avoiding these over normal walls
   sprite: {fileID: 21300000, guid: db367fd597cd231438b91b5f2eac0d00, type: 3}
-  price: 75
+  price: 50
   level: 1
   maxHp: 40
   attackDmg: 0

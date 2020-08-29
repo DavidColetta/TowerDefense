@@ -17,6 +17,7 @@ public class Settings : MonoBehaviour
     public Slider SFXVolumeSlider;
     public TMP_Dropdown difficultyDropdown;
     public CameraMovement cameraMovement;
+    private bool ignoreFirstResolutionChange = true;
     private void Start() {
         fullscreenToggle.isOn = Screen.fullScreen;
 
@@ -57,6 +58,10 @@ public class Settings : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
     public void SetResolution(int resolutionIndex){
+        if (ignoreFirstResolutionChange){
+            ignoreFirstResolutionChange = false;
+            return;
+        }
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }

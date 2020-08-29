@@ -12,8 +12,12 @@ public class TowerAI : MonoBehaviour
     public Quaternion dir;
     private BoxCollider2D bc;
     private SpriteRenderer SpriteR;
-    protected GameObject target;
+    [HideInInspector]
+    public GameObject target;
     public int hp;
+    [HideInInspector] public float attackDmgMultiplier = 1;
+    [HideInInspector] public float attackRateMultiplier = 1;
+    [HideInInspector] public float rangeMultiplier = 1;
     [SerializeField] private string attackSound = "";
     void Awake()
     {
@@ -22,8 +26,7 @@ public class TowerAI : MonoBehaviour
 
         hp = tower.maxHp;
 
-        //Update A* path to include this Tower
-        //AstarPath.active.UpdateGraphs (bc.bounds);
+        AudioManager.Play_Static("Build", true);
 
         dir = transform.rotation;
     }
@@ -48,6 +51,7 @@ public class TowerAI : MonoBehaviour
         }
     }
     IEnumerator HurtEffect(){
+        AudioManager.Play_Static("Damage");
         if (hurtParticles)
             Instantiate(hurtParticles, transform.position, Quaternion.identity, transform);
         SpriteR.color = new Color(1f, 0.6f, 0.6f, 1f);
@@ -58,10 +62,12 @@ public class TowerAI : MonoBehaviour
         if (tower.price >= 120*DifficultyManager.localDifficulty)
             RestartWaveButton.GainRestartWave();
         Destroy(gameObject);
+        AudioManager.Play_Static("Break");
     }
-    private void OnDestroy() {
-        if (AstarPath.active)
+    protected virtual void OnDestroy() {
+        if (AstarPath.active){
             AstarPath.active.GetNearest(transform.position).node.Tag = 0;
+        }
     }
     #endregion
     #region Attack
@@ -69,7 +75,7 @@ public class TowerAI : MonoBehaviour
         if (projectile){
             if (target){
                 if (!IsInvoking("FireBullet")){
-                    InvokeRepeating("FireBullet", tower.attackRate, tower.attackRate);
+                    InvokeRepeating("FireBullet", tower.attackRate/attackRateMultiplier, tower.attackRate/attackRateMultiplier);
                 }
             } else {
                 UpdateTarget();
@@ -83,8 +89,8 @@ public class TowerAI : MonoBehaviour
         AudioManager.Play_Static(attackSound, true);
         GameObject _projectile = Instantiate(projectile, transform.position, dir, transform);
         ProjectileAI _projectileAI = _projectile.GetComponent<ProjectileAI>();
-        _projectileAI.attackDmg = tower.attackDmg;
-        _projectileAI.range = tower.range;
+        _projectileAI.attackDmg = Mathf.RoundToInt(tower.attackDmg * attackDmgMultiplier);
+        _projectileAI.range = tower.range * rangeMultiplier;
     }
 
     public virtual void UpdateTarget(){
@@ -94,7 +100,7 @@ public class TowerAI : MonoBehaviour
         GameObject[] enemies;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closest = null;
-        float distance = tower.range;
+        float distance = tower.range * rangeMultiplier;
         Vector3 position = transform.position;
         foreach (GameObject potentialTarget in enemies)
         {

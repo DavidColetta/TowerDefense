@@ -4,6 +4,8 @@
 public class Tower : ScriptableObject {
     public GameObject towerObj;
     public new string name;
+    public string description;
+
     public Sprite sprite;
     public int price;
     public int level = 1;
