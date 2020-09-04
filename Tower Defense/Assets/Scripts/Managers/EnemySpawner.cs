@@ -5,12 +5,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public int waveMultiplier = 100;
+    public float spawnSpeedIncrease = 2f;
     public float spawnSpeed;
     public float ambushChance = 0.075f;
     public Vector2 spawnBox;
     public Enemy[] enemies;
     [HideInInspector]
     public SpawnChances spawnChanceScript;
+    //[HideInInspector]
     public float[] spawnChances;
     [HideInInspector]
     public Vector2 spawnPos;
@@ -23,13 +25,15 @@ public class EnemySpawner : MonoBehaviour
     private void Awake() {
         wave = 0;
         waveInProgress = false;
+
+        spawnChances = new float[enemies.Length];
     }
     public void StartNextWave() {
         if (!waveInProgress){
             wave ++;
             waveInProgress = true;
             spawnCurrency = wave * waveMultiplier;
-            spawnSpeed ++;
+            spawnSpeed += spawnSpeedIncrease;
             cannotSpawn.Clear();
 
             AudioManager.Play_Static("Trumpets");
@@ -75,9 +79,12 @@ public class EnemySpawner : MonoBehaviour
                 spawnPos = new Vector2(-spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
             }
         }
+        WaveComplete();
+    }
+    private void WaveComplete(){
         waveInProgress = false;
-
         MoneyManager.GainMoney(Mathf.RoundToInt(waveMultiplier*DifficultyManager.localDifficulty));
+        AudioManager.Play_Static("WaveComplete");
     }
 
     Enemy ChooseEnemy(){

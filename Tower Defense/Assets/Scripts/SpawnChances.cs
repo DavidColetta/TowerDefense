@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnChances : MonoBehaviour
 {
     private EnemySpawner enemySpawner;
+    public Vector3[] spawnChances;
     void Start()
     {
         enemySpawner = GetComponent<EnemySpawner>();
@@ -12,6 +13,13 @@ public class SpawnChances : MonoBehaviour
     }
 
     public void UpdateSpawnChances(int wave){
+        foreach (Vector3 spawnChance in spawnChances)
+        {
+            if (spawnChance.x == wave){
+                enemySpawner.spawnChances[(int)spawnChance.y] = spawnChance.z;
+            }
+        }
+        /*
         switch (wave){
             case 2:
                 enemySpawner.spawnChances[1] = 0.4f;
@@ -47,5 +55,7 @@ public class SpawnChances : MonoBehaviour
             default:
                 break;
         }
+        */
     }
+
 }

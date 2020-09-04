@@ -38,7 +38,10 @@ public class PauseManager : MonoBehaviour
     }
     public void Unpause(bool dontUndampenAudio = false){
         paused = false;
-        Time.timeScale = 1;
+        if (FastForwardButton.speedUp)
+            Time.timeScale = FastForwardButton.fastForwardSpeed;
+        else 
+            Time.timeScale = 1;
         if (!dontUndampenAudio)
             Default.TransitionTo(0.2f);
         pausePanel.SetActive(false);

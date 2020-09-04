@@ -147,7 +147,25 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Trumpets
     clip: {fileID: 8300000, guid: 9d1a449a2dcc56d49af9e5dfe847fcdd, type: 3}
+    volume: 0.7
+    pitch: 1
+    pitchVariance: 0.02
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: WaveComplete
+    clip: {fileID: 8300000, guid: 05be96006a195924398f8b11b46d8930, type: 3}
     volume: 1
+    pitch: 1
+    pitchVariance: 0.02
+    loop: 0
+    output: {fileID: -8659990445460039193, guid: 5757ed51151237d4bb290df12dfa1b0d,
+      type: 2}
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: dceca58a1e6654f4abb788cf0e616c7f, type: 3}
+    volume: 0.8
     pitch: 1
     pitchVariance: 0.02
     loop: 0

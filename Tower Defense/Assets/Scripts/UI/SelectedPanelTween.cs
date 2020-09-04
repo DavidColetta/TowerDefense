@@ -23,13 +23,13 @@ public class SelectedPanelTween : MonoBehaviour
             rectTransform.localScale = disabledScale;
             LeanTween.cancel(currentTweenID);
             Enabled = true;
-            currentTweenID = LeanTween.scale(rectTransform, defaultScale, tweenDuration).id;
+            currentTweenID = LeanTween.scale(rectTransform, defaultScale, tweenDuration).setIgnoreTimeScale(true).id;
         }
     }
     public void Disable(){
         if (Enabled){
             Enabled = false;
-            currentTweenID = LeanTween.scale(rectTransform, disabledScale, tweenDuration).setOnComplete(ActuallyDisable).id;
+            currentTweenID = LeanTween.scale(rectTransform, disabledScale, tweenDuration).setOnComplete(ActuallyDisable).setIgnoreTimeScale(true).id;
         }
     }
     private void ActuallyDisable(){

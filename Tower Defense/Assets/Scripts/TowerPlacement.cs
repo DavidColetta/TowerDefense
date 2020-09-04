@@ -100,6 +100,8 @@ public class TowerPlacement : MonoBehaviour
                         GameObject _placedTower = Instantiate(tower.towerObj, transform.position, transform.rotation, parent.transform);
                         MoneyManager.GainMoney(tower.price * -1);
                         Selector.SelectTower(_placedTower);
+                    } else {
+                        Destroy(gameObject);
                     }
                 } else {
                     Destroy(gameObject);

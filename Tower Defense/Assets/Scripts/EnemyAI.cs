@@ -6,7 +6,6 @@ public class EnemyAI : MonoBehaviour
 {
     public Enemy enemy;
     public int hp;
-    public GameObject projectile;
     [HideInInspector]
     public EnemyPathfinding pathfinding;
     public GameObject target;
@@ -20,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     private int maxHp;
 
 
-    void Awake()
+    protected virtual void Awake()
     {
         pathfinding = GetComponent<EnemyPathfinding>();
         pathfinding.enemy = enemy;
@@ -64,25 +63,17 @@ public class EnemyAI : MonoBehaviour
 
     void Attack(){
         if (target){
-            if (!projectile){
-                target.GetComponent<TowerAI>().TakeDamage(enemy.attackDmg);
-            } else {
-                GameObject _projectile = Instantiate(projectile, transform.position, transform.rotation, transform.parent);
-                ProjectileAI _projectileAI = _projectile.GetComponent<ProjectileAI>();
-                _projectileAI.attackDmg = enemy.attackDmg;
-                _projectileAI.range = enemy.range;
-                _projectileAI.friendly = false;
-            }
+            target.GetComponent<TowerAI>().TakeDamage(enemy.attackDmg);
         }
     }
-    private void OnCollisionStay2D(Collision2D collision) {
+    protected void OnCollisionStay2D(Collision2D collision) {
         GameObject collidingObj = collision.gameObject;
         if (collidingObj.tag == "Wall" || collidingObj.tag == "Tower"){
             pathfinding.reachedTower = true;
             target = collidingObj;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision) {
+    protected void OnCollisionExit2D(Collision2D collision) {
         GameObject collidingObj = collision.gameObject;
         if (collidingObj == target){
             pathfinding.reachedTower = false;

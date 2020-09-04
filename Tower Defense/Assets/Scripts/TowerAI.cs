@@ -102,8 +102,7 @@ public class TowerAI : MonoBehaviour
         GameObject closest = null;
         float distance = tower.range * rangeMultiplier;
         Vector3 position = transform.position;
-        foreach (GameObject potentialTarget in enemies)
-        {
+        foreach (GameObject potentialTarget in enemies){
             float _distance = Vector2.Distance(potentialTarget.transform.position, position);
             if (_distance < distance)
             {

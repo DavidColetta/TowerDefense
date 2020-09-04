@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Pathfinding;
-
+[RequireComponent(typeof(LineRenderer))]
 public class PathfindingRenderer : MonoBehaviour
 {
     [SerializeField]

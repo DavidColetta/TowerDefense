@@ -21,4 +21,4 @@ MonoBehaviour:
   attackRate: 1
   range: 0
   defense: 3
-  spawnCost: 30
+  spawnCost: 20

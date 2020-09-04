@@ -72,10 +72,13 @@ public class ProjectileAI : MonoBehaviour
                     OnHit();
                 }
             }
-        } else if (!friendly){
+        } 
+        if (!friendly){
             if (collidingObj.tag == "Tower" || collidingObj.tag == "Wall"){
                 TowerAI towerAI = collidingObj.GetComponent<TowerAI>();
                 if (!ignore.Contains(collidingObj)){
+                    ignore.Add(collidingObj);
+                    AudioManager.Play_Static(hitSound, true);
                     towerAI.TakeDamage(attackDmg);
                     OnHit();
                 }

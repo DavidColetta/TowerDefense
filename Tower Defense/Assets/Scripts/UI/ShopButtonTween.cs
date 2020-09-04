@@ -20,13 +20,13 @@ public class ShopButtonTween : MonoBehaviour
     }
     public void MoveRight(){
         if (!OnRight){
-            LeanTween.moveX(rectTransform,rightPosition,tweenDuration);
+            LeanTween.moveX(rectTransform,rightPosition,tweenDuration).setIgnoreTimeScale(true);
             OnRight = true;
         }
     }
     public void MoveLeft(){
         if (OnRight){
-            LeanTween.moveX(rectTransform,leftPosition,tweenDuration);
+            LeanTween.moveX(rectTransform,leftPosition,tweenDuration).setIgnoreTimeScale(true);
             OnRight = false;
         }
     }

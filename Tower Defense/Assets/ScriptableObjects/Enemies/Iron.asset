@@ -15,10 +15,10 @@ MonoBehaviour:
   enemyObj: {fileID: 3750046421976770906, guid: c7939b448cedb3a4ca2efe0b42d9f3d5,
     type: 3}
   name: Iron
-  maxHp: 10
+  maxHp: 15
   attackDmg: 20
   speed: 1.5
   attackRate: 1.5
   range: 0
   defense: 7
-  spawnCost: 50
+  spawnCost: 30
