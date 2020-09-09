@@ -139,7 +139,7 @@ public class EnemyAI : MonoBehaviour
             debuff.Update();
         }
     }
-    void Die(){
+    protected virtual void Die(){
         Destroy(gameObject);
         MoneyManager.GainMoney(enemy.spawnCost);
     }

@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector]
     public Vector2 spawnPos;
     public static int wave = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int spawnCurrency;
     [HideInInspector]
     public static bool waveInProgress = false;
@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnPos = new Vector2(spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
                 DifficultyManager.UpdateDifficulty(0.8f);
             }else{
-                spawnPos = new Vector2(-spawnBox.x, Random.Range(-spawnBox.y, spawnBox.y));
+                spawnPos = new Vector2(-spawnBox.x, 0);
                 DifficultyManager.UpdateDifficulty();
             }
 
@@ -93,6 +93,10 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!cannotSpawn.Contains(i)){
                 if (enemies[i].spawnCost <= spawnCurrency && spawnChances[i] > 0){
+                    if (spawnChances[i] >= 2){
+                        spawnCurrency -= enemies[i].spawnCost;
+                        return enemies[i];
+                    }
                     enemiesToCheck.Add(i);
                 } else {
                     cannotSpawn.Add(i);
@@ -102,7 +106,6 @@ public class EnemySpawner : MonoBehaviour
         while (enemiesToCheck.Count > 0)
         {
             int checkingID = enemiesToCheck[Random.Range(0, enemiesToCheck.Count)];
-            //Debug.Log(checkingID);
             if (spawnChances[checkingID] > Random.value){
                 spawnCurrency -= enemies[checkingID].spawnCost;
                 return enemies[checkingID];

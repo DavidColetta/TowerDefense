@@ -20,8 +20,10 @@ public class RestartWaveButton : MonoBehaviour
 
     public static void GainRestartWave(){
         CanRestart = true;
-        instance.gameObject.SetActive(true);
-        instance.nextWaveTextTMP.SetText("Restart Wave " + (EnemySpawner.wave));
+        if (instance){
+            instance.gameObject.SetActive(true);
+            instance.nextWaveTextTMP.SetText("Restart Wave " + (EnemySpawner.wave));
+        }
     }
     void Update()
     {

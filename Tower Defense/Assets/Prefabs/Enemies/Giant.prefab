@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3750046421976770887}
   - component: {fileID: 8243317159893563379}
   - component: {fileID: 1673979364678362132}
-  - component: {fileID: 1400657685}
+  - component: {fileID: 5409655284682965147}
   m_Layer: 10
   m_Name: Giant
   m_TagString: Enemy
@@ -60,8 +60,10 @@ MonoBehaviour:
   hurtParticles: {fileID: 9004610638690518784, guid: aa0e5765c5d9f834f9aca79cdd7fdefe,
     type: 3}
   speedMultiplier: 1
-  shootRate: 8
+  shootRate: 10
   projectile: {fileID: 4732160250739290908, guid: 467fab978c222004bb45a06b90d1793a,
+    type: 3}
+  spitParticles: {fileID: 8251685539127145051, guid: 42d39f8bd34beed47b372442b0735290,
     type: 3}
 --- !u!114 &3750046421976770885
 MonoBehaviour:
@@ -218,7 +220,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1400657685
+--- !u!114 &5409655284682965147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,7 +229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3750046421976770906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e77739806242cc24ea809c4ed8c1df7b, type: 3}
+  m_Script: {fileID: 11500000, guid: e7b9576b68a8dc34bac9b75dec834f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7329215248608532437

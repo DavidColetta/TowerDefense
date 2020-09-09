@@ -15,10 +15,10 @@ MonoBehaviour:
   enemyObj: {fileID: 3750046421976770906, guid: 98cc4ff2751f31c4590e07d3cb1425d5,
     type: 3}
   name: Giant Slime
-  maxHp: 1000
-  attackDmg: 20
-  speed: 0.6
+  maxHp: 750
+  attackDmg: 15
+  speed: 0.5
   attackRate: 1
   range: 0
-  defense: 4
-  spawnCost: 700
+  defense: 2
+  spawnCost: 100

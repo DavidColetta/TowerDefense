@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimateEnemyPunch : MonoBehaviour
 {
-    private Animator animator;
+    protected Animator animator;
     private EnemyAI enemyAI;
     void Start()
     {
@@ -13,7 +13,7 @@ public class AnimateEnemyPunch : MonoBehaviour
         enemyAI = GetComponent<EnemyAI>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (enemyAI.target){
             animator.SetBool("Attacking", true);

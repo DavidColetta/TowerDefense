@@ -13,9 +13,12 @@ public class PauseManager : MonoBehaviour
     private GameObject settingsPanel = null;
     [SerializeField] 
     private GameObject gameOverPanel = null;
+    [SerializeField] 
+    private GameObject winPanel = null;
     private static PauseManager instance;
     [SerializeField] private AudioMixerSnapshot Default = null;
     [SerializeField] private AudioMixerSnapshot DampenedMusic = null;
+    public static bool won = false;
     public static void Pause_Static(){
         instance.Pause();
     }
@@ -27,12 +30,18 @@ public class PauseManager : MonoBehaviour
         pausePanel.transform.SetAsLastSibling();
         if (GameOver.isGameOver){
             settingsPanel.SetActive(false);
+            winPanel.SetActive(false);
             gameOverPanel.SetActive(true);
             TextMeshProUGUI GameOverWaveText = gameOverPanel.transform.Find("GameOverWaveText").gameObject.GetComponent<TextMeshProUGUI>();
             GameOverWaveText.text = "Wave: "+EnemySpawner.wave;
-
-        } else {
+        } else if (won){
             gameOverPanel.SetActive(false);
+            winPanel.SetActive(true);
+            settingsPanel.SetActive(false);
+        } 
+        else {
+            gameOverPanel.SetActive(false);
+            winPanel.SetActive(false);
             settingsPanel.SetActive(true);
         }
     }
@@ -54,6 +63,7 @@ public class PauseManager : MonoBehaviour
         }
     }
     private void Awake() {
+        won = false;
         if (!instance){
             instance = this;
         } else {
@@ -69,5 +79,10 @@ public class PauseManager : MonoBehaviour
                 TogglePause();
             }
         }
+    }
+    public void DisplaySettings(){
+        gameOverPanel.SetActive(false);
+        winPanel.SetActive(false);
+        settingsPanel.SetActive(true);
     }
 }
